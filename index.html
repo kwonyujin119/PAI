@@ -1,0 +1,3113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인구절벽시대 피지컬AI 소방현장활동 도입 연구 | 권유진</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #1F3864;
+  --navy-dark: #0F1E3A;
+  --navy-mid: #142645;
+  --navy-light: #2E5090;
+  --accent: #C00000;
+  --accent-light: #E8A0A0;
+  --gold: #B8860B;
+  --gold-light: #D4A933;
+  --gray-900: #1A1F2C;
+  --gray-700: #495057;
+  --gray-500: #6C757D;
+  --gray-400: #9CA3AF;
+  --gray-300: #DEE2E6;
+  --gray-200: #E8ECEF;
+  --gray-100: #F5F7FA;
+  --gray-50: #FAFBFC;
+  --bg-cream: #FAF9F6;
+  --shadow-sm: 0 1px 3px rgba(15,30,58,0.06);
+  --shadow-md: 0 4px 12px rgba(15,30,58,0.08);
+  --shadow-lg: 0 12px 36px rgba(15,30,58,0.12);
+  --shadow-xl: 0 24px 60px rgba(15,30,58,0.14);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  line-height: 1.75;
+  color: var(--gray-900);
+  background: linear-gradient(135deg, #eef1f6 0%, #dde3ec 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ 상단 브랜드 바 ============ */
+.brand-bar {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+  color: #fff;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 3px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-bar::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(184,134,11,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+  color: var(--navy-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: -0.5px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.logo-mark.small { font-size: 10px; }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.brand-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-meta {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.85);
+  text-align: right;
+  line-height: 1.5;
+}
+
+.brand-meta strong { color: #fff; font-weight: 600; }
+
+.print-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.print-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* ============ 탭 네비게이션 ============ */
+.tab-nav {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tab-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding: 0 20px;
+}
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 16px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--gray-500);
+  letter-spacing: -0.2px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 78px;
+}
+
+.tab-btn:hover {
+  color: var(--navy);
+  background: var(--gray-50);
+}
+
+.tab-btn.active {
+  color: var(--navy);
+  border-bottom-color: var(--gold);
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent 0%, rgba(184,134,11,0.04) 100%);
+}
+
+.tab-btn .tab-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.tab-btn .tab-label { font-size: 13px; }
+
+.tab-btn.cover {
+  background: linear-gradient(180deg, transparent 0%, rgba(31,56,100,0.04) 100%);
+}
+
+.tab-btn.cover.active {
+  background: linear-gradient(180deg, rgba(31,56,100,0.06) 0%, rgba(184,134,11,0.04) 100%);
+}
+
+/* ============ 메인 컨테이너 ============ */
+.main-wrapper {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px 60px;
+}
+
+.tab-pane {
+  display: none;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-pane.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ 표지 (커버 페이지 / 목차) ============ */
+.cover-page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(180deg, #fff 0%, var(--gray-50) 100%);
+}
+
+.cover-hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  color: #fff;
+  padding: 36px 50px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-hero::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -8%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(184,134,11,0.20) 0%, transparent 65%);
+  border-radius: 50%;
+}
+
+.cover-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: -10%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-hero-content { position: relative; z-index: 1; }
+
+.cover-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  color: rgba(255,255,255,0.92);
+}
+
+.cover-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.cover-title .accent-bar {
+  display: inline-block;
+  width: 50px;
+  height: 4px;
+  background: var(--gold);
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+
+.cover-title-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 14.5px;
+  font-style: italic;
+  color: rgba(255,255,255,0.78);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.cover-author {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.85);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+
+.cover-author strong {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.cover-author .sep { color: rgba(255,255,255,0.3); }
+
+/* TOC 본문 */
+.toc-body {
+  padding: 30px 50px 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 28px;
+}
+
+.toc-block {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-left: 4px solid var(--navy);
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.toc-block:hover {
+  border-left-color: var(--gold);
+  box-shadow: var(--shadow-md);
+  transform: translateX(2px);
+}
+
+.toc-block.abstract { border-left-color: var(--gray-500); grid-column: span 2;}
+.toc-block.ch1 { border-left-color: #2563EB; }
+.toc-block.ch2 { border-left-color: #DC2626; }
+.toc-block.ch3 { border-left-color: #7C3AED; }
+.toc-block.ch4 { border-left-color: #16A34A; }
+.toc-block.ch5 { border-left-color: var(--accent); border-left-width: 5px; background: linear-gradient(135deg, #fff, #fef9f9); grid-column: span 2; }
+.toc-block.ch6 { border-left-color: #0D9488; }
+.toc-block.ch7 { border-left-color: #D97706; }
+.toc-block.ch8 { border-left-color: var(--navy-dark); }
+.toc-block.appendix { border-left-color: var(--gray-400); border-left-style: dashed; grid-column: span 2; }
+
+.toc-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--gray-200);
+}
+
+.toc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+  min-width: 24px;
+}
+
+.toc-block.ch5 .toc-num { color: var(--accent); }
+.toc-block.abstract .toc-num,
+.toc-block.appendix .toc-num { font-size: 13px; color: var(--gray-700); }
+
+.toc-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  flex: 1;
+  letter-spacing: -0.3px;
+}
+
+.toc-block.ch5 .toc-name { color: var(--accent); }
+
+.toc-pages {
+  font-size: 10.5px;
+  color: var(--gray-500);
+  font-weight: 600;
+  background: var(--gray-100);
+  padding: 2px 7px;
+  border-radius: 10px;
+  letter-spacing: 0.3px;
+}
+
+.toc-star {
+  background: var(--accent);
+  color: #fff;
+  font-size: 9.5px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.toc-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--gray-700);
+  line-height: 1.5;
+  padding: 1px 0;
+}
+
+.toc-item .ti-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--navy-light);
+  font-size: 10.5px;
+  min-width: 22px;
+  flex-shrink: 0;
+}
+
+.toc-block.ch5 .toc-item .ti-num { color: var(--accent); }
+
+.toc-item .ti-name { flex: 1; }
+
+.toc-item .ti-pg {
+  font-size: 10px;
+  color: var(--gray-400);
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+}
+
+.toc-block.ch5 .toc-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 18px;
+}
+
+.toc-block.appendix .toc-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px 12px;
+}
+
+/* TOC 푸터 통계 */
+.toc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 50px;
+  background: linear-gradient(90deg, var(--navy-dark), var(--navy));
+  color: #fff;
+  font-size: 12px;
+}
+
+.toc-footer-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toc-footer-stat .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.toc-footer-stat .label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.5px;
+}
+
+.toc-footer-stat .sep { width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+
+/* ============ 챕터 헤더 (공통) ============ */
+.chapter-header {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  color: #ffffff;
+  padding: 60px 60px 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-header::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.chapter-header::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.chapter-label {
+  position: relative; z-index: 1;
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.chapter-number {
+  position: relative; z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.13);
+  margin-bottom: -16px;
+  letter-spacing: -2px;
+}
+
+.chapter-title {
+  position: relative; z-index: 1;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+
+.chapter-subtitle {
+  position: relative; z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.chapter-meta {
+  position: relative; z-index: 1;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.5px;
+}
+
+/* ============ 챕터 내부 TOC ============ */
+.toc {
+  background: var(--bg-cream);
+  padding: 28px 60px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.toc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.toc-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 24px;
+}
+
+.toc-list li a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--gray-700);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.toc-list li a:hover {
+  background: #fff;
+  color: var(--navy);
+  transform: translateX(3px);
+}
+
+.toc-list .toc-number {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 13px;
+  min-width: 30px;
+}
+
+/* ============ 본문 콘텐츠 ============ */
+.content {
+  padding: 50px 60px 60px;
+}
+
+.section {
+  margin-top: 50px;
+  margin-bottom: 28px;
+  scroll-margin-top: 80px;
+}
+
+.section:first-child { margin-top: 0; }
+
+.section-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  letter-spacing: -0.8px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--navy);
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.subsection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.subsection-badge {
+  background: var(--navy);
+  color: #fff;
+  padding: 4px 11px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.subsection-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--gray-900);
+  letter-spacing: -0.4px;
+}
+
+.paragraph, .paragraph-en {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--gray-900);
+  margin-bottom: 16px;
+  text-align: justify;
+  word-break: keep-all;
+}
+
+.paragraph-en {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: left;
+  color: var(--gray-700);
+}
+
+/* ============ 강조 스타일 ============ */
+.highlight-num {
+  font-weight: 700;
+  color: var(--accent);
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+.highlight-navy { font-weight: 600; color: var(--navy); }
+
+.highlight-term {
+  background: linear-gradient(180deg, transparent 60%, rgba(184,134,11,0.25) 60%);
+  font-weight: 600;
+  padding: 0 2px;
+}
+
+.italic-term {
+  font-style: italic;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.order-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-family: 'Noto Serif KR', serif;
+}
+
+cite { font-style: italic; color: var(--gray-700); font-size: 0.95em; }
+
+/* ============ 핵심 요약 박스 ============ */
+.summary-box {
+  background: linear-gradient(135deg, #fff8f0 0%, #fefefe 100%);
+  border: 1px solid var(--gold);
+  border-left: 5px solid var(--gold);
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.summary-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--gray-900);
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ============ 압박 카드 ============ */
+.pressure-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.pressure-card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-top: 4px solid var(--accent);
+  padding: 20px 18px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.pressure-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.pressure-card:nth-child(2) { border-top-color: var(--gold); }
+.pressure-card:nth-child(3) { border-top-color: var(--navy); }
+
+.pressure-order {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-500);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pressure-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 14px;
+}
+
+.pressure-stat {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.pressure-card:nth-child(2) .pressure-stat { color: var(--gold); }
+.pressure-card:nth-child(3) .pressure-stat { color: var(--navy); }
+
+.pressure-desc { font-size: 11.5px; color: var(--gray-700); line-height: 1.6; }
+
+/* ============ 목적 카드 ============ */
+.objective-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.objective-card {
+  background: linear-gradient(135deg, #f7faff 0%, #fff 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 22px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.objective-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+}
+
+.objective-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.objective-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+}
+
+.objective-desc { font-size: 12.5px; color: var(--gray-700); line-height: 1.7; word-break: keep-all; }
+
+/* ============ 범위 박스 ============ */
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.scope-item {
+  background: var(--gray-50);
+  border-left: 3px solid var(--navy);
+  padding: 12px 16px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scope-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.scope-value {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy-dark);
+}
+
+/* ============ 방법론 표 ============ */
+.method-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 22px 0 4px;
+  font-size: 13.5px;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.method-table thead {
+  background: var(--navy-dark);
+  color: #fff;
+}
+
+.method-table th {
+  padding: 12px 14px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+}
+
+.method-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.method-table tbody tr:last-child td { border-bottom: none; }
+.method-table tbody tr:hover { background: var(--gray-50); }
+
+.method-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 16px;
+  text-align: center !important;
+}
+
+.method-name { font-family: 'Noto Serif KR', serif; font-weight: 600; color: var(--navy); }
+
+.table-caption {
+  font-size: 12px;
+  color: var(--gray-500);
+  text-align: center;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+/* ============ 플로우 차트 ============ */
+.flow-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0 4px;
+}
+
+.flow-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-left: 4px solid var(--navy);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.flow-item:hover {
+  transform: translateX(4px);
+  border-left-color: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.flow-item.star {
+  border-left-color: var(--accent);
+  border-left-width: 5px;
+  background: linear-gradient(90deg, #fef9f9, #fff);
+}
+
+.flow-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 56px;
+  letter-spacing: -0.3px;
+}
+
+.flow-item.star .flow-number { color: var(--accent); }
+
+.flow-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--gray-900);
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.flow-desc { font-size: 13px; color: var(--gray-700); line-height: 1.6; flex: 1; }
+
+/* ============ 차별성 카드 ============ */
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.diff-card {
+  background: linear-gradient(135deg, #fff 0%, #fafbfc 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 20px 18px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.diff-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.diff-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.diff-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+}
+
+.diff-desc { font-size: 12.5px; color: var(--gray-700); line-height: 1.7; word-break: keep-all; }
+
+/* ============ 초록 전용 스타일 ============ */
+.abstract-section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 30px 0 24px;
+}
+
+.abstract-section-num {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.abstract-section-title-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  letter-spacing: -0.5px;
+}
+
+.abstract-section-title-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--gray-500);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* 설문 결과 카드 */
+.findings-box {
+  background: linear-gradient(135deg, #f7faff 0%, #fff 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin: 24px 0;
+}
+
+.findings-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.finding-card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  padding: 14px 12px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.finding-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+.finding-rank {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gray-500);
+  letter-spacing: 0.5px;
+  background: var(--gray-100);
+  padding: 2px 7px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.finding-rank.top { color: #fff; background: var(--accent); }
+
+.finding-percent {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.finding-percent.top { color: var(--accent); }
+
+.finding-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.finding-score { font-size: 10.5px; color: var(--gray-500); font-family: 'Inter', sans-serif; }
+
+/* 경제성 박스 */
+.economics-box {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin: 24px 0;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.econ-item {
+  padding: 22px 20px;
+  text-align: center;
+}
+
+.econ-item.left { background: linear-gradient(135deg, #fef2f2, #fff); }
+.econ-item.right { background: linear-gradient(135deg, #fff, #f7faff); }
+
+.econ-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-500);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.econ-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.econ-item.right .econ-value { color: var(--navy); }
+
+.econ-desc { font-size: 11.5px; color: var(--gray-700); }
+
+.econ-divider {
+  background: var(--gray-900);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.econ-divider small {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+/* 핵심어 박스 */
+.keywords-box {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+
+.keywords-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-500);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-tag {
+  background: #fff;
+  color: var(--gray-700);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--gray-300);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.keyword-tag:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+/* 영문 구분선 */
+.en-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 50px 0 32px;
+}
+
+.en-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gray-300), transparent);
+}
+
+.en-divider-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  color: var(--gray-500);
+  letter-spacing: 4px;
+  font-style: italic;
+}
+
+/* ============ 플레이스홀더 (제2장~8장, 부록) ============ */
+.placeholder-content {
+  padding: 40px 60px 50px;
+}
+
+.placeholder-notice {
+  background: linear-gradient(135deg, #fff8f0 0%, #fefdfb 100%);
+  border: 1px dashed var(--gold);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.placeholder-icon {
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.placeholder-text {
+  flex: 1;
+}
+
+.placeholder-text h4 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 4px;
+}
+
+.placeholder-text p {
+  font-size: 13px;
+  color: var(--gray-700);
+  line-height: 1.65;
+}
+
+.outline-section {
+  margin-bottom: 24px;
+}
+
+.outline-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.outline-title .ot-num {
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.outline-list { display: flex; flex-direction: column; gap: 10px; }
+
+.outline-item {
+  background: var(--gray-50);
+  border-left: 3px solid var(--navy);
+  padding: 12px 16px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.outline-item:hover {
+  background: #fff;
+  border-left-color: var(--gold);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.outline-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.outline-item-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.outline-item-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.outline-item-pg {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--gray-500);
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+}
+
+.outline-item-desc {
+  font-size: 12.5px;
+  color: var(--gray-700);
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+/* ============ 챕터 푸터 ============ */
+.chapter-footer {
+  background: var(--bg-cream);
+  padding: 26px 60px 30px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer-divider {
+  text-align: center;
+  color: var(--gray-300);
+  font-size: 14px;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.footer-current {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.footer-next { font-style: italic; color: var(--gray-700); cursor: pointer; }
+.footer-next:hover { color: var(--navy); }
+
+.footer-info {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gray-300);
+  font-size: 11px;
+  color: var(--gray-500);
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* ============ 인쇄용 ============ */
+@media print {
+  body { background: #fff; padding: 0; }
+  .brand-bar, .tab-nav, .print-btn { display: none !important; }
+  .main-wrapper { max-width: 100%; margin: 0; padding: 0; }
+  .tab-pane { display: block !important; box-shadow: none; border-radius: 0; page-break-after: always; }
+  .chapter-header { padding: 30px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .content { padding: 30px; }
+  .toc { display: none; }
+  .pressure-card, .objective-card, .scope-item, .method-table, .flow-item, .diff-card,
+  .summary-box, .findings-box, .economics-box, .keywords-box, .toc-block, .outline-item {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-inside: avoid;
+  }
+}
+
+/* ============ 반응형 (PC 우선이지만 안전망) ============ */
+@media (max-width: 900px) {
+  .toc-body { grid-template-columns: 1fr; padding: 24px 30px; }
+  .toc-block.abstract, .toc-block.ch5, .toc-block.appendix { grid-column: span 1; }
+  .cover-hero { padding: 28px 30px; }
+  .cover-title { font-size: 24px; }
+  .chapter-header { padding: 40px 30px; }
+  .chapter-number { font-size: 70px; }
+  .chapter-title { font-size: 26px; }
+  .content { padding: 30px; }
+  .toc-list, .pressure-cards, .objective-grid, .scope-grid, .diff-grid, .findings-grid {
+    grid-template-columns: 1fr;
+  }
+  .economics-box { grid-template-columns: 1fr; }
+  .brand-bar { padding: 12px 20px; flex-wrap: wrap; gap: 12px; }
+  .brand-meta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ 브랜드 바 ════════════ -->
+<div class="brand-bar">
+  <div class="brand-left">
+    <div class="brand-logos">
+      <div class="logo-mark" title="인천소방학교">인천<br>소방</div>
+      <div class="logo-mark small" title="인천소방본부">인천<br>본부</div>
+      <div class="logo-mark small" title="소방청">소방<br>청</div>
+    </div>
+    <div class="brand-text">
+      <div class="brand-title">인구절벽시대 피지컬AI 소방현장활동 도입 연구</div>
+      <div class="brand-sub">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 2026</div>
+    </div>
+  </div>
+  <div class="brand-right">
+    <div class="brand-meta">
+      <strong>인천소방학교 전임교수 권유진</strong><br>
+      A Study on Physical AI for Fire Service
+    </div>
+    <button class="print-btn" onclick="window.print()">🖨 인쇄 / PDF</button>
+  </div>
+</div>
+
+<!-- ════════════ 탭 네비게이션 ════════════ -->
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn cover active" data-tab="cover">
+      <span class="tab-num">COVER</span>
+      <span class="tab-label">표지·목차</span>
+    </button>
+    <button class="tab-btn" data-tab="abstract">
+      <span class="tab-num">ABSTRACT</span>
+      <span class="tab-label">초록</span>
+    </button>
+    <button class="tab-btn" data-tab="ch1">
+      <span class="tab-num">CH 01</span>
+      <span class="tab-label">제1장 서론</span>
+    </button>
+    <button class="tab-btn" data-tab="ch2">
+      <span class="tab-num">CH 02</span>
+      <span class="tab-label">제2장 인구절벽</span>
+    </button>
+    <button class="tab-btn" data-tab="ch3">
+      <span class="tab-num">CH 03</span>
+      <span class="tab-label">제3장 기술동향</span>
+    </button>
+    <button class="tab-btn" data-tab="ch4">
+      <span class="tab-num">CH 04</span>
+      <span class="tab-label">제4장 인식조사</span>
+    </button>
+    <button class="tab-btn" data-tab="ch5">
+      <span class="tab-num">CH 05 ★</span>
+      <span class="tab-label">제5장 도입연구</span>
+    </button>
+    <button class="tab-btn" data-tab="ch6">
+      <span class="tab-num">CH 06</span>
+      <span class="tab-label">제6장 교육기관</span>
+    </button>
+    <button class="tab-btn" data-tab="ch7">
+      <span class="tab-num">CH 07</span>
+      <span class="tab-label">제7장 로드맵</span>
+    </button>
+    <button class="tab-btn" data-tab="ch8">
+      <span class="tab-num">CH 08</span>
+      <span class="tab-label">제8장 결론</span>
+    </button>
+    <button class="tab-btn" data-tab="appendix">
+      <span class="tab-num">APP</span>
+      <span class="tab-label">부록</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════ 메인 컨텐츠 ════════════ -->
+<div class="main-wrapper">
+
+<!-- ───── COVER (표지 + 목차 한 페이지) ───── -->
+<div class="tab-pane active" id="pane-cover">
+  <div class="cover-page">
+    <!-- HERO -->
+    <div class="cover-hero">
+      <div class="cover-hero-content">
+        <span class="cover-badge">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 2026</span>
+        <div class="accent-bar"></div>
+        <h1 class="cover-title">인구절벽시대 피지컬AI<br>소방현장활동 도입 연구</h1>
+        <p class="cover-title-en">A Study on the Introduction of Physical AI for Fire Service Field Operations in the Era of Demographic Cliff</p>
+        <div class="cover-author">
+          <span><strong>권유진</strong> Yu-Jin Kwon</span>
+          <span class="sep">|</span>
+          <span>인천소방학교 전임교수</span>
+          <span class="sep">|</span>
+          <span>소방행정 · 피지컬AI · 공공정책</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOC BODY -->
+    <div class="toc-body">
+
+      <div class="toc-block abstract">
+        <div class="toc-head">
+          <span class="toc-num">📋</span>
+          <span class="toc-name">초록 / Abstract</span>
+          <span class="toc-pages">2p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">—</span><span class="ti-name">국문·영문 초록 / 핵심어 (피지컬AI · 소방현장 · 인구절벽 · 휴머노이드 · 경제성)</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch1">
+        <div class="toc-head">
+          <span class="toc-num">01</span>
+          <span class="toc-name">서론</span>
+          <span class="toc-pages">10p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">1.1</span><span class="ti-name">연구 배경 및 필요성</span><span class="ti-pg">4p</span></div>
+          <div class="toc-item"><span class="ti-num">1.2</span><span class="ti-name">연구 목적 및 범위</span><span class="ti-pg">2p</span></div>
+          <div class="toc-item"><span class="ti-num">1.3</span><span class="ti-name">연구 방법 및 논문 구성</span><span class="ti-pg">2p</span></div>
+          <div class="toc-item"><span class="ti-num">1.4</span><span class="ti-name">선행연구 검토 및 차별성</span><span class="ti-pg">2p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch2">
+        <div class="toc-head">
+          <span class="toc-num">02</span>
+          <span class="toc-name">인구절벽과 소방 인력 위기</span>
+          <span class="toc-pages">12p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">2.1</span><span class="ti-name">초고령사회 진입과 인력 수급 위기</span><span class="ti-pg">6p</span></div>
+          <div class="toc-item"><span class="ti-num">2.2</span><span class="ti-name">3교대 근무의 위험성과 현장 실태</span><span class="ti-pg">6p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch3">
+        <div class="toc-head">
+          <span class="toc-num">03</span>
+          <span class="toc-name">피지컬AI 기술 동향 및 제도 현황</span>
+          <span class="toc-pages">14p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">3.1</span><span class="ti-name">개념 정의 및 기술 분류</span><span class="ti-pg">4p</span></div>
+          <div class="toc-item"><span class="ti-num">3.2</span><span class="ti-name">국내외 기업·기술 현황 및 시장 전망</span><span class="ti-pg">4p</span></div>
+          <div class="toc-item"><span class="ti-num">3.3</span><span class="ti-name">해외 소방 분야 적용 사례 비교</span><span class="ti-pg">3p</span></div>
+          <div class="toc-item"><span class="ti-num">3.4</span><span class="ti-name">관련 법령 및 정책 현황</span><span class="ti-pg">3p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch4">
+        <div class="toc-head">
+          <span class="toc-num">04</span>
+          <span class="toc-name">현장 인식도 조사</span>
+          <span class="toc-pages">14p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">4.1</span><span class="ti-name">설문조사 개요 및 응답자 특성</span><span class="ti-pg">3p</span></div>
+          <div class="toc-item"><span class="ti-num">4.2</span><span class="ti-name">설문 결과 분석 (13개 문항)</span><span class="ti-pg">8p</span></div>
+          <div class="toc-item"><span class="ti-num">4.3</span><span class="ti-name">5대 정책과제 도출</span><span class="ti-pg">3p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch5">
+        <div class="toc-head">
+          <span class="toc-num">05</span>
+          <span class="toc-name">피지컬AI 소방 현장 도입 연구</span>
+          <span class="toc-star">★ 핵심 ★</span>
+          <span class="toc-pages">25p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">5.1</span><span class="ti-name">분야별 활용 방안 (화재·구조·구급)</span><span class="ti-pg">8p</span></div>
+          <div class="toc-item"><span class="ti-num">5.2</span><span class="ti-name">경제성 분석 (CBA 프레임)</span><span class="ti-pg">6p</span></div>
+          <div class="toc-item"><span class="ti-num">5.3</span><span class="ti-name">법·규제 및 윤리적 한계</span><span class="ti-pg">5p</span></div>
+          <div class="toc-item"><span class="ti-num">5.4</span><span class="ti-name">롱테일 문제와 데이터 전략</span><span class="ti-pg">3p</span></div>
+          <div class="toc-item"><span class="ti-num">5.5</span><span class="ti-name">격무지 분석 및 우선 도입 전략</span><span class="ti-pg">3p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch6">
+        <div class="toc-head">
+          <span class="toc-num">06</span>
+          <span class="toc-name">소방 교육기관의 역할 재정립</span>
+          <span class="toc-pages">10p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">6.1</span><span class="ti-name">교육 패러다임 전환</span><span class="ti-pg">3p</span></div>
+          <div class="toc-item"><span class="ti-num">6.2</span><span class="ti-name">전담요원 양성 교육과정 (안)</span><span class="ti-pg">4p</span></div>
+          <div class="toc-item"><span class="ti-num">6.3</span><span class="ti-name">훈련 데이터 축적 시스템 설계</span><span class="ti-pg">3p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch7">
+        <div class="toc-head">
+          <span class="toc-num">07</span>
+          <span class="toc-name">단계별 도입 로드맵 및 기대효과</span>
+          <span class="toc-pages">8p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">7.1</span><span class="ti-name">3단계 도입 로드맵 (2026~2040)</span><span class="ti-pg">5p</span></div>
+          <div class="toc-item"><span class="ti-num">7.2</span><span class="ti-name">기대 효과</span><span class="ti-pg">3p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block ch8">
+        <div class="toc-head">
+          <span class="toc-num">08</span>
+          <span class="toc-name">결론 및 정책 제언</span>
+          <span class="toc-pages">5p</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">8.1</span><span class="ti-name">연구 결과 요약</span><span class="ti-pg">2p</span></div>
+          <div class="toc-item"><span class="ti-num">8.2</span><span class="ti-name">정책 제언</span><span class="ti-pg">2p</span></div>
+          <div class="toc-item"><span class="ti-num">8.3</span><span class="ti-name">연구의 한계와 향후 과제</span><span class="ti-pg">1p</span></div>
+        </div>
+      </div>
+
+      <div class="toc-block appendix">
+        <div class="toc-head">
+          <span class="toc-num">📎</span>
+          <span class="toc-name">부록 (Appendix)</span>
+          <span class="toc-pages">—</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item"><span class="ti-num">①</span><span class="ti-name">설문지 원본 (13문항)</span></div>
+          <div class="toc-item"><span class="ti-num">②</span><span class="ti-name">표 목록 (List of Tables)</span></div>
+          <div class="toc-item"><span class="ti-num">③</span><span class="ti-name">그림 목록 (List of Figures)</span></div>
+          <div class="toc-item"><span class="ti-num">④</span><span class="ti-name">참고문헌 (References)</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TOC FOOTER -->
+    <div class="toc-footer">
+      <div class="toc-footer-stat">
+        <span class="num">8</span>
+        <span class="label">CHAPTERS</span>
+      </div>
+      <div class="toc-footer-stat sep"></div>
+      <div class="toc-footer-stat">
+        <span class="num">~100</span>
+        <span class="label">PAGES</span>
+      </div>
+      <div class="toc-footer-stat sep"></div>
+      <div class="toc-footer-stat">
+        <span class="num">349</span>
+        <span class="label">SURVEY RESPONDENTS</span>
+      </div>
+      <div class="toc-footer-stat sep"></div>
+      <div class="toc-footer-stat">
+        <span class="num">5</span>
+        <span class="label">METHODOLOGIES</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ───── 초록 / Abstract ───── -->
+<div class="tab-pane" id="pane-abstract">
+  <header class="chapter-header">
+    <div class="chapter-label">A B S T R A C T</div>
+    <div class="chapter-number">00</div>
+    <h1 class="chapter-title">초 록</h1>
+    <p class="chapter-subtitle">Korean & English Abstract</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <main class="content">
+
+    <!-- ★ 국문 초록 ★ -->
+    <div class="abstract-section-header">
+      <div class="abstract-section-num">국</div>
+      <div>
+        <div class="abstract-section-title-kr">국 문 초 록</div>
+        <div class="abstract-section-title-en">Korean Abstract</div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      대한민국은 2025년 <span class="highlight-term">초고령사회</span>(65세 이상 인구 비율 20% 이상)에 진입하였으며, 세계에서 가장 빠른 속도로 진행되는 인구감소와 고령화는 소방 인력 수급에 구조적 위기를 초래하고 있다. <em>소방청 통계연보(2025)</em>에 따르면 2024년 기준 전국 소방공무원은 총 <span class="highlight-num">66,802명</span>이며, 소방공무원 1인당 담당인구는 <span class="highlight-num">766명</span>으로 현장 인력의 양적 부족이 지속되고 있다. 복합 초고층 건물, 지하 공간 확장, 기후변화에 따른 대형 재난의 빈발은 소방력 수요를 지속적으로 증가시키는 한편, 현장 대원의 고령화, 3교대 근무에 따른 피로 누적, 순직·공상의 위험은 기존 인력 증원 방식만으로는 해결하기 어려운 <span class="highlight-navy">삼중의 구조적 압박</span>을 형성하고 있다.
+    </p>
+
+    <p class="paragraph">
+      본 연구는 이러한 인구절벽 시대의 소방력 강화를 위해 <span class="highlight-navy">피지컬AI(Physical AI)</span>의 소방 현장 도입 가능성과 타당성을 다각도로 분석하고, 단계적 도입 로드맵을 제시하는 것을 목적으로 한다. 피지컬AI란 대형언어모델(LLM) 기반의 고차원 추론 능력을 물리적 신체(휴머노이드 로봇 등)에 통합하여 현실 세계에서 자율적으로 <span class="italic-term">감지-판단-행동(Sense-Think-Act)</span>하는 차세대 AI 시스템을 의미한다.
+    </p>
+
+    <p class="paragraph">
+      연구 방법으로는 <span class="highlight-navy">문헌연구, 설문조사, 기술 비교분석, 경제성 분석, 사례연구</span>의 복합적 방법론을 채택하였다. 특히 <span class="highlight-num">인천소방본부 소속 소방공무원 349명</span>을 대상으로 실시한 설문조사(리커트 5점 척도, 13개 문항, 2026년 2월~3월)를 통해 피지컬AI 도입에 대한 현장의 인식과 수요를 실증적으로 파악하였다.
+    </p>
+
+    <p class="paragraph">
+      주요 연구 결과는 다음과 같다. <span class="order-label">첫째,</span> 전체 13개 설문 문항 중 <strong style="color: var(--accent);">"재난 현장의 비정형 상황이 빈번하다"는 인식이 88.83%(평균 4.43점)로 최상위</strong>를 기록하였다. 주요 응답 결과는 다음과 같다.
+    </p>
+
+    <div class="findings-box">
+      <div class="findings-title">▷ 주요 설문 결과 (긍정 응답률 순)</div>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <span class="finding-rank top">1위 · 최상위</span>
+          <div class="finding-percent top">88.83%</div>
+          <div class="finding-label">재난 현장 비정형 상황 빈번성</div>
+          <div class="finding-score">평균 4.43 / 5.00</div>
+        </div>
+        <div class="finding-card">
+          <span class="finding-rank">2위</span>
+          <div class="finding-percent">86.25%</div>
+          <div class="finding-label">피지컬AI 교육훈련 필요성</div>
+          <div class="finding-score">평균 4.30 / 5.00</div>
+        </div>
+        <div class="finding-card">
+          <span class="finding-rank">3위</span>
+          <div class="finding-percent">78.51%</div>
+          <div class="finding-label">전담체계(부서·요원·매뉴얼) 필요성</div>
+          <div class="finding-score">평균 4.14 / 5.00</div>
+        </div>
+        <div class="finding-card">
+          <span class="finding-rank">5위</span>
+          <div class="finding-percent">71.18%</div>
+          <div class="finding-label">피지컬AI 도입 불가피성</div>
+          <div class="finding-score">평균 3.93 / 5.00</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">둘째,</span> 피지컬AI의 <strong>화재</strong>(선행정찰·호스보조·잔화처리), <strong>구조</strong>(붕괴·수중·산악), <strong>구급</strong>(CPR보조·환자이송·트리아지) 분야별 활용 방안과 현장 대응 매뉴얼 초안을 제시하였다. <span class="order-label">셋째,</span> 경제성 분석 결과 소방공무원 1인의 30년 생애주기비용은 피지컬AI 1대의 30년 환산 운용비용의 약 <span class="highlight-num">6배</span>에 달하여, 피지컬AI가 보완재로서 높은 비용효과성을 지닌다는 사실을 확인하였다.
+    </p>
+
+    <div class="economics-box">
+      <div class="econ-item left">
+        <div class="econ-label">소방공무원 1인</div>
+        <div class="econ-value">27~30억 원</div>
+        <div class="econ-desc">30년 생애주기비용</div>
+      </div>
+      <div class="econ-divider">
+        6배<small>GAP</small>
+      </div>
+      <div class="econ-item right">
+        <div class="econ-label">피지컬AI 1대</div>
+        <div class="econ-value">4~5억 원</div>
+        <div class="econ-desc">30년 환산 운용비용</div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">넷째,</span> 자율주행 분야의 <span class="italic-term">롱테일 문제(Long-Tail Problem)</span>를 소방 현장에 적용하여, 비정형 재난 환경에서의 데이터 부족 문제를 <strong>소방학교 훈련 데이터 축적</strong>과 <strong>시뮬레이션 기반</strong>으로 해결하는 전략을 제안하였다.
+    </p>
+
+    <p class="paragraph">
+      이상의 분석을 종합하여, 본 연구는 2026년부터 2040년까지의 <span class="highlight-navy">3단계 도입 로드맵</span>(1단계 준비·시범 → 2단계 확산·학습 → 3단계 전국 보급)을 제시하였다. 또한 <strong>소방기본법 개정</strong>, <strong>규제샌드박스 활용</strong>, <strong>피지컬AI 전담요원 양성 교육과정 설계</strong>, <strong>소방학교의 훈련 데이터 허브 역할</strong> 등 구체적인 정책 제언을 도출하였다.
+    </p>
+
+    <p class="paragraph">
+      본 연구는 소방학과 피지컬AI를 복합적으로 다루며 기술적 적용 가능성, 현장 인식도, 경제적 타당성, 법·제도적 과제를 동시에 검토한 <span class="highlight-num">국내 최초의 학제적 연구</span>로서, 피지컬AI가 소방관을 대체하는 것이 아니라 <em style="color: var(--navy); font-weight: 600;">소방관이 더 안전하게, 더 오래, 더 효과적으로 국민의 생명과 재산을 지킬 수 있도록 돕는 동료</em>로 기능할 수 있음을 논증한다.
+    </p>
+
+    <div class="keywords-box">
+      <div class="keywords-label">핵 심 어  |  KEYWORDS</div>
+      <div class="keywords-list">
+        <span class="keyword-tag">피지컬AI</span>
+        <span class="keyword-tag">소방현장활동</span>
+        <span class="keyword-tag">인구절벽</span>
+        <span class="keyword-tag">휴머노이드 로봇</span>
+        <span class="keyword-tag">소방 교육</span>
+        <span class="keyword-tag">경제성 분석</span>
+        <span class="keyword-tag">롱테일 문제</span>
+        <span class="keyword-tag">소방 로드맵</span>
+      </div>
+    </div>
+
+    <!-- 영문 구분선 -->
+    <div class="en-divider">
+      <div class="en-divider-line"></div>
+      <div class="en-divider-text">E N G L I S H  ·  A B S T R A C T</div>
+      <div class="en-divider-line"></div>
+    </div>
+
+    <!-- ★ 영문 Abstract ★ -->
+    <div class="abstract-section-header">
+      <div class="abstract-section-num">EN</div>
+      <div>
+        <div class="abstract-section-title-kr" style="font-family: 'Playfair Display', serif; font-style: italic;">Abstract</div>
+        <div class="abstract-section-title-en">English Abstract</div>
+      </div>
+    </div>
+
+    <p class="paragraph-en">
+      South Korea entered a <span class="highlight-term">super-aged society</span> in 2025 (with over 20% of the population aged 65 or older), and its rapidly declining and aging population—the fastest demographic transition globally—is creating a structural crisis in fire service workforce supply. According to the <em>National Fire Agency Statistical Yearbook (2025)</em>, there were <span class="highlight-num">66,802 firefighters</span> nationwide as of 2024, with each firefighter responsible for <span class="highlight-num">766 residents</span>. The increasing complexity of disasters, coupled with the aging of field personnel, fatigue from three-shift rotations, and the persistent risk of line-of-duty deaths and injuries, has created a triple structural pressure that cannot be resolved through conventional workforce expansion alone.
+    </p>
+
+    <p class="paragraph-en">
+      This study aims to analyze the feasibility and validity of introducing <span class="highlight-navy">Physical AI</span> into fire service field operations as a strategic response to the demographic cliff, and to propose a phased deployment roadmap. Physical AI refers to next-generation AI systems that integrate large language model (LLM)-based higher-order reasoning into physical embodiments such as humanoid robots, enabling autonomous <span class="italic-term">sense-think-act cycles</span> in real-world environments.
+    </p>
+
+    <p class="paragraph-en">
+      The study employed a mixed-methods approach comprising literature review, survey research, comparative technology analysis, cost-benefit analysis, and case studies. A survey of <span class="highlight-num">349 firefighters</span> from the Incheon Fire Department, utilizing a five-point Likert scale across 13 items (February–March 2026), provided empirical evidence of field-level perceptions and demand.
+    </p>
+
+    <p class="paragraph-en">
+      Key findings include the following. <span class="order-label">First,</span> among all 13 survey items, <strong style="color: var(--accent);">the highest approval rating (88.83%, mean=4.43) was for the recognition that non-standard situations are frequent in disaster scenes</strong>. This was followed by the need for Physical AI training and education (86.25%, mean=4.30, 2nd), the necessity of a dedicated operational framework—specialized units, trained personnel, and operational manuals—at 78.51% (mean=4.14, 3rd), and the inevitability of Physical AI adoption at 71.18% (mean=3.93, 5th). <span class="order-label">Second,</span> the study proposed field application strategies for Physical AI across fire suppression (advance reconnaissance, hose deployment assistance, residual fire monitoring), rescue (structural collapse, underwater, mountain), and emergency medical services (CPR assistance, patient transport, triage support), along with a preliminary field response manual. <span class="order-label">Third,</span> cost-effectiveness analysis revealed that the 30-year lifecycle cost of a single firefighter (approximately <span class="highlight-num">KRW 2.7–3.0 billion</span>) is roughly <span class="highlight-num">six times</span> that of a Physical AI unit (approximately <span class="highlight-num">KRW 400–500 million</span>), demonstrating significant cost-effectiveness as a complementary asset. <span class="order-label">Fourth,</span> by applying the <span class="italic-term">long-tail problem</span> framework from autonomous driving to fire service contexts, the study proposed a data acquisition strategy centered on fire academy training data accumulation and simulation-based approaches.
+    </p>
+
+    <p class="paragraph-en">
+      Based on these findings, the study presents a <span class="highlight-navy">three-phase deployment roadmap</span> spanning 2026 to 2040 (Preparation & Pilot → Expansion & Learning → Nationwide Deployment), along with specific policy recommendations including amendment of the Framework Act on Fire Services, utilization of regulatory sandboxes, design of Physical AI operator training curricula, and repositioning fire academies as training data hubs. This study represents the <span class="highlight-num">first interdisciplinary research in Korea</span> to comprehensively examine the technological applicability, field perception, economic feasibility, and legal-institutional challenges of integrating Physical AI into fire service operations.
+    </p>
+
+    <div class="keywords-box">
+      <div class="keywords-label">K E Y W O R D S</div>
+      <div class="keywords-list">
+        <span class="keyword-tag">Physical AI</span>
+        <span class="keyword-tag">Fire Service Field Operations</span>
+        <span class="keyword-tag">Demographic Cliff</span>
+        <span class="keyword-tag">Humanoid Robot</span>
+        <span class="keyword-tag">Fire Service Education</span>
+        <span class="keyword-tag">Cost-Benefit Analysis</span>
+        <span class="keyword-tag">Long-Tail Problem</span>
+        <span class="keyword-tag">Fire Service Roadmap</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">ABSTRACT · END</div>
+      <div class="footer-next" onclick="switchTab('ch1')">▶ 다음: 제1장 · 서론</div>
+    </div>
+    <div class="footer-info">
+      제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026
+    </div>
+  </footer>
+</div>
+
+
+<!-- ───── 제1장 서론 ───── -->
+<div class="tab-pane" id="pane-ch1">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">01</div>
+    <h1 class="chapter-title">서 론</h1>
+    <p class="chapter-subtitle">Introduction</p>
+    <div class="chapter-meta">
+      인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 인천소방학교 전임교수 권유진 · 2026
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">본 장의 구성  |  Chapter Contents</div>
+    <ul class="toc-list">
+      <li><a href="#sec-1-1"><span class="toc-number">1.1</span> 연구 배경 및 필요성</a></li>
+      <li><a href="#sec-1-2"><span class="toc-number">1.2</span> 연구 목적 및 범위</a></li>
+      <li><a href="#sec-1-3"><span class="toc-number">1.3</span> 연구 방법 및 논문 구성</a></li>
+      <li><a href="#sec-1-4"><span class="toc-number">1.4</span> 선행연구 검토 및 연구의 차별성</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+
+    <!-- ============ 1.1 연구 배경 및 필요성 ============ -->
+    <div class="section" id="sec-1-1">
+      <div class="section-number">SECTION 1.1</div>
+      <h2 class="section-title">연구 배경 및 필요성</h2>
+    </div>
+
+    <div class="summary-box">
+      <div class="summary-label">핵심 문제의식 · Core Question</div>
+      <p class="summary-text">
+        대한민국은 인구절벽과 초고령사회 진입이라는 거시 변수와, 소방 현장의 <strong style="color:var(--accent);">양적 부족·질적 고령화·업무 부담 증가</strong>라는 삼중의 구조적 압박에 직면해 있다. 이와 동시에 피지컬AI 기술 전환이 가속화되며, 기술 성숙·정책 추진·현장 수요가 정렬되는 <strong style="color:var(--navy);">'골든 타임'</strong>이 도래하였다. 본 연구는 이를 활용하여 <strong style="color:var(--accent);">초기 5년(2026~2030) 집중 도입 로드맵</strong>을 핵심 축으로 삼는 현실적·실행 가능한 전략을 제시한다.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.1.1</span>
+      <h3 class="subsection-title">인구절벽과 초고령사회 진입의 시대적 의미</h3>
+    </div>
+
+    <p class="paragraph">
+      대한민국은 2025년을 기점으로 <span class="highlight-num">65세 이상 인구 비율이 20%를 초과</span>하며 초고령사회에 공식 진입하였다. 이는 고령화 사회(7%) 진입 이후 단 25년만에 이루어진 세계 최고 속도의 인구구조 변화로, 경제활동인구 감소, 재정 부담 증가, 공공서비스 인력 공급 위기 등 전방위적 구조 변동을 예고한다.
+    </p>
+
+    <p class="paragraph">
+      특히 공공부문 중에서도 신체적·정신적 부담이 큰 소방 분야는 인구절벽의 영향에 가장 취약한 영역 중 하나이다. 20~40대 청장년층 인구 감소로 신규 소방공무원 충원이 점차 어려워지고 있으며, 기존 현장 인력 또한 급격히 고령화되고 있다. 이는 단순한 인력 수급의 문제가 아니라, <span class="highlight-navy">국민의 생명과 재산을 지키는 소방 시스템의 근본적 지속가능성</span>에 대한 도전이다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.1.2</span>
+      <h3 class="subsection-title">소방 현장의 삼중 구조적 압박</h3>
+    </div>
+
+    <p class="paragraph">소방 현장은 현재 세 가지 차원의 구조적 압박에 직면해 있다.</p>
+
+    <div class="pressure-cards">
+      <div class="pressure-card">
+        <div class="pressure-order">첫째 · 양적 부족</div>
+        <div class="pressure-title">인력의 절대적 부족</div>
+        <div class="pressure-stat">766명</div>
+        <div class="pressure-desc">소방공무원 1인당 담당인구<br>(2024, 소방청 통계연보)</div>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-order">둘째 · 질적 고령화</div>
+        <div class="pressure-title">현장 대원의 노령화</div>
+        <div class="pressure-stat">70.49%</div>
+        <div class="pressure-desc">40~50대 응답자 비율<br>(본 연구 설문, n=349)</div>
+      </div>
+      <div class="pressure-card">
+        <div class="pressure-order">셋째 · 업무 부담</div>
+        <div class="pressure-title">비정형 재난 급증</div>
+        <div class="pressure-stat">88.83%</div>
+        <div class="pressure-desc">비정형 상황 빈번성 동의<br>(전체 문항 최상위)</div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">첫째, 양적 부족이다.</span> 소방청 통계연보(2025)에 따르면 2024년 기준 전국 소방공무원은 <span class="highlight-num">66,802명</span>이며, 소방공무원 1인당 담당인구는 <span class="highlight-num">766명</span>에 달한다. 정부는 이러한 인력 부족을 인지하여 2030년까지 소방공무원 5,000명 추가 충원을 추진 중이다(소방청, 2025). 그러나 인구감소 추세 속에서 기존 충원 방식만으로는 지속가능성에 명확한 한계가 존재한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">둘째, 질적 고령화이다.</span> 본 연구의 인천소방본부 설문조사(349명, 2026)에 따르면 <span class="highlight-num">40~50대 응답자가 전체의 70.49%</span>를 차지하며, 60대 이상 응답자도 1.15% 존재한다. 이는 현장 대원의 고령화가 통계적으로 뚜렷하게 확인되는 현상임을 의미하며, 체력적 한계에 직면한 대원들의 고강도 재난 대응 능력이 점차 약화될 우려가 있다. 설문 응답자의 69.63%가 "현장대원들도 고령화 추세이며, 향후 복합·대형 재난 대응에 한계가 발생할 것"이라고 응답한 점이 이를 뒷받침한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">셋째, 업무 부담 증가이다.</span> 복합 초고층 건물, 지하 공간 확장, 기후변화에 따른 대형 재난의 빈발은 소방력 수요를 지속적으로 증가시키고 있다. 본 연구 설문에서도 "재난 현장의 비정형 상황이 빈번하다"는 인식이 <span class="highlight-num">88.83%(평균 4.43점)</span>로 전체 문항 중 최상위를 기록했다. 3교대 근무의 피로 누적, 순직·공상 위험은 기존 증원만으로 해결되지 않는 구조적 한계를 드러낸다.
+    </p>
+
+    <p class="paragraph">
+      이러한 양적 부족, 질적 고령화, 업무 부담 증가라는 <span class="italic-term">'삼중의 구조적 압박'</span>은 기존의 인력 중심 접근으로는 해결이 불가능하며, 구조적 전환이 필요함을 강력히 시사한다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.1.3</span>
+      <h3 class="subsection-title">피지컬AI 기술 전환의 도래</h3>
+    </div>
+
+    <p class="paragraph">
+      이와 때를 같이하여 AI 기술은 순수 정보 처리 단계(디지털 AI)에서 물리적 신체를 가진 단계(<span class="highlight-navy">피지컬 AI</span>)로 진화하고 있다. 한국과학기술기획평가원(KISTEP, 2024)의 <cite>「AI 휴머노이드 로봇 동향 및 시사점」</cite> 보고서는 AI 휴머노이드 로봇이 향후 산업·공공 서비스의 핵심 인프라가 될 것이라 분석한 바 있다. Tesla의 Optimus, Boston Dynamics의 Atlas, Figure AI, 중국 Unitree의 휴머노이드, 현대차의 Atlas 활용 등은 이러한 전환의 대표적 사례이다.
+    </p>
+
+    <p class="paragraph">
+      대한민국 정부 역시 이러한 흐름에 선제적으로 대응하고 있다. 관계부처 합동으로 수립된 <cite>「제4차 지능형로봇 기본계획(2024~2028)」</cite>은 K-로봇 경제 실현을 국가 전략으로 추진하며, 2028년까지 지능형로봇 분야 민간 투자 1조 원 달성을 목표로 한다. <cite>「첨단로봇 규제혁신 방안」(관계부처 합동, 2023)</cite>은 첨단로봇 전반의 규제 완화 방향을 제시하였으며, 2025년 10월 1일 시행된 <cite>「지능형 로봇 개발 및 보급 촉진법」(법률 제21065호)</cite>은 지능형 로봇의 공공부문 활용을 위한 법제적 토대를 제공한다.
+    </p>
+
+    <p class="paragraph">
+      소방청 또한 이러한 전환의 선두에 서고 있다. 소방청은 <span class="highlight-navy">현대차와의 협업을 통해 AI 전환 무인소방로봇 100대 보급</span>을 추진 중이며(소방청 보도자료, 2025), "소방에도 AI가 온다"는 정책 방향을 공표하였다. 이는 소방 분야의 기술 전환이 더 이상 미래의 과제가 아니라, 현재 진행 중인 정책적 의제임을 보여준다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.1.4</span>
+      <h3 class="subsection-title">연구의 시의성</h3>
+    </div>
+
+    <p class="paragraph">
+      인구절벽에 따른 소방력 약화와 피지컬AI 기술 전환은 동시에 진행되는 두 개의 거시 변수이다. 이 둘을 접점으로 연결하여 소방 현장의 해법을 모색하는 것이 본 연구의 시대적 과제이다.
+    </p>
+
+    <p class="paragraph">
+      본 연구의 설문조사에서 응답자의 <span class="highlight-num">71.18%가 "피지컬AI 도입이 불가피하다"</span>고 답하였고, 78.51%가 전담체계(전담부서·전담요원·매뉴얼) 필요성에 동의하였으며, 86.25%가 교육훈련 필요성에 동의하였다. 이는 단순히 기술적·정책적 당위에 그치지 않고, <span class="highlight-navy">현장 스스로가 이미 구조적 전환을 요구하고 있음</span>을 보여준다.
+    </p>
+
+    <p class="paragraph">
+      지금이 기술 성숙, 정책 추진, 현장 수요가 모두 정렬되는 <span class="italic-term">'골든 타임(Golden Time)'</span>이다. 본 연구는 이 골든 타임을 활용하여 인구절벽 시대의 소방력 유지와 강화를 위한 학제적 해법을 제시하고자 한다. 특히 <span class="highlight-num">초기 5년(2026~2030)의 집중 도입 전략</span>을 핵심 축으로 삼아, 단기간 내 가시적 성과를 창출하고 이를 기반으로 중장기 확산을 도모하는 <span class="italic-term">'선택과 집중'형 접근</span>을 채택한다. 이는 정책의 일관성과 예산의 효율성을 동시에 담보하는 현실적 전략이다.
+    </p>
+
+    <!-- ============ 1.2 연구 목적 및 범위 ============ -->
+    <div class="section" id="sec-1-2">
+      <div class="section-number">SECTION 1.2</div>
+      <h2 class="section-title">연구 목적 및 범위</h2>
+    </div>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.2.1</span>
+      <h3 class="subsection-title">연구 목적</h3>
+    </div>
+
+    <p class="paragraph">본 연구의 목적은 다음 세 가지로 구체화된다.</p>
+
+    <div class="objective-grid">
+      <div class="objective-card">
+        <div class="objective-num">01</div>
+        <div class="objective-title">학제적 분석</div>
+        <div class="objective-desc">피지컬AI의 소방 현장 도입 가능성·타당성을 기술·경제·법제·윤리 관점에서 통합적으로 분석</div>
+      </div>
+      <div class="objective-card">
+        <div class="objective-num">02</div>
+        <div class="objective-title">실증 및 활용 방안</div>
+        <div class="objective-desc">349명 설문 기반 현장 수요 확인, 화재·구조·구급 분야별 구체적 활용 시나리오와 매뉴얼 초안 제시</div>
+      </div>
+      <div class="objective-card">
+        <div class="objective-num">03</div>
+        <div class="objective-title">로드맵 · 정책</div>
+        <div class="objective-desc">2026~2040 3단계 도입 로드맵과 소방청·국회·소방학교·예산당국 등 주체별 정책 제언 도출</div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">첫째, 피지컬AI의 소방 현장 도입 가능성과 타당성을 학제적으로 분석</span>하는 것이다. 기술적 성숙도, 경제적 타당성, 법·제도적 과제, 윤리적 쟁점을 동시에 검토하여 다차원적 결론을 도출한다. 단일 학문 분야의 시각만으로는 포착하기 어려운 복합적 현상을 통합적으로 접근한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">둘째, 현장 수요를 실증적으로 확인하고 분야별 구체적 활용 방안을 제시</span>하는 것이다. 설문조사(349명)와 현장 인터뷰를 통해 현장 인식을 확인하고, 화재·구조·구급 3대 분야에서의 구체적인 피지컬AI 활용 시나리오와 현장 대응 매뉴얼 초안을 개발한다. 이는 본 연구가 단순한 이론 연구를 넘어 실무 적용 가능한 결과물을 지향함을 의미한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">셋째, 단계적 도입 로드맵과 정책 제언을 도출</span>하는 것이다. 2026년부터 2040년까지의 3단계 로드맵을 제시하고, 소방청·국회·소방학교·예산당국 등 각 주체별 실행 가능한 정책 제언을 구체화한다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.2.2</span>
+      <h3 class="subsection-title">연구 범위</h3>
+    </div>
+
+    <p class="paragraph">본 연구의 범위는 공간·시간·내용의 세 축으로 설정된다.</p>
+
+    <div class="scope-grid">
+      <div class="scope-item">
+        <span class="scope-label">공간적 범위</span>
+        <span class="scope-value">인천소방본부 → 전국</span>
+      </div>
+      <div class="scope-item">
+        <span class="scope-label">시간적 범위</span>
+        <span class="scope-value">5년 집중 + 10년 확산</span>
+      </div>
+      <div class="scope-item">
+        <span class="scope-label">내용적 범위</span>
+        <span class="scope-value">화재·구조·구급 3대 분야</span>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">① 공간적 범위 </span> 설문조사는 인천소방본부 소속 소방공무원을 대상으로 하되, 정책 제언 및 로드맵은 전국 소방조직을 대상으로 한다. 인천은 국제공항(인천국제공항), 항만(인천항), 대규모 산업단지(남동·부평·주안), 초고층 건축물이 밀집된 복합재난 위험지역으로서 전국 소방행정의 축약판 성격을 갖는다. 따라서 인천의 현장 인식 데이터는 일정 수준 전국적 대표성을 지닌다고 판단된다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">② 시간적 범위 </span> 본 연구는 2026년부터 2040년까지의 15년을 <span class="highlight-num">'초기 5년 집중 도입기(2026~2030)'와 '중장기 10년 확산기(2031~2040)'</span>로 이원화하여 접근한다. <span class="highlight-navy">특히 초기 5년 집중 도입기를 본 연구의 핵심 분석 대상</span>으로 삼아, 연도별·분기별 세부 이정표(Milestone)와 정량 지표(KPI)를 구체화한다. 이는 원대한 장기 계획의 추상성을 극복하고, 1개 정부 임기 내에 실행 가능한 현실적 로드맵을 제시하기 위함이다. 5년 집중 도입기는 <span class="highlight-navy">법·제도 정비(2026) → 시범 배치(2027) → 데이터 축적·매뉴얼(2028) → 전담요원 양성·확산 준비(2029) → 전국 확산 기초 완성(2030)</span>의 단계별 세부 전략을 갖는다. 이후 중장기 확산기(2031~2040)에서는 전국 소방서 단위 확산과 국가 소방력 구조 재편이 이루어진다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">③ 내용적 범위 </span> 화재·구조·구급의 3대 소방 현장활동 전반을 다루며, 본 연구는 기술적 적용 가능성, 경제적 타당성, 법·제도적 과제, 윤리적 쟁점이라는 네 가지 측면을 통합적으로 검토한다. 다만 피지컬AI의 기초 알고리즘 개발, 로봇 하드웨어 설계 등 순수 공학적 주제는 본 연구의 범위에서 제외한다.
+    </p>
+
+    <!-- ============ 1.3 연구 방법 및 논문 구성 ============ -->
+    <div class="section" id="sec-1-3">
+      <div class="section-number">SECTION 1.3</div>
+      <h2 class="section-title">연구 방법 및 논문 구성</h2>
+    </div>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.3.1</span>
+      <h3 class="subsection-title">연구 방법</h3>
+    </div>
+
+    <p class="paragraph">본 연구는 단일 방법론으로는 포착하기 어려운 현상의 복합성을 고려하여, 다음 다섯 가지 방법을 복합적으로 채택한다.</p>
+
+    <table class="method-table">
+      <thead>
+        <tr>
+          <th style="width: 8%;">구분</th>
+          <th style="width: 22%;">방법론</th>
+          <th style="width: 70%;">주요 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="method-num">①</td>
+          <td class="method-name">문헌연구</td>
+          <td>국내외 학술논문, 정부 정책보고서, 법령, 통계자료, 시장조사 보고서, 언론 보도자료 체계적 수집·분석</td>
+        </tr>
+        <tr>
+          <td class="method-num">②</td>
+          <td class="method-name">설문조사</td>
+          <td>인천소방본부 소방공무원 <strong style="color:var(--accent);">349명</strong>, 2026.2.27~3.20(3주), <strong>13개 문항</strong>, 리커트 5점 척도, 온라인(구글폼)</td>
+        </tr>
+        <tr>
+          <td class="method-num">③</td>
+          <td class="method-name">기술 비교분석</td>
+          <td>Tesla Optimus, Figure 02, Boston Dynamics Atlas, Unitree H1·G1 등 글로벌 주요 휴머노이드 로봇 기술 사양·가격·성숙도 비교</td>
+        </tr>
+        <tr>
+          <td class="method-num">④</td>
+          <td class="method-name">경제성 분석</td>
+          <td>소방공무원 1인 30년 생애주기비용(LCC)과 피지컬AI 1대 30년 환산 운용비용 비교, 비용편익분석(CBA), VSL 기반 순직 방지 효과 정량화</td>
+        </tr>
+        <tr>
+          <td class="method-num">⑤</td>
+          <td class="method-name">사례연구</td>
+          <td>미국 LAFD Thermite 로봇, 일본 소방청 방재 로봇 시험, UAE 두바이 소방 드론, 중국 실전 배치 사례 비교 분석</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-caption">&lt;표 1-1&gt; 본 연구의 복합 방법론</div>
+
+    <p class="paragraph">
+      특히 <strong>④ 경제성 분석</strong>과 <strong>⑤ 사례연구</strong>는 국내 선행연구에서 체계적으로 다루어지지 않은 영역으로, 본 연구의 독창적 기여에 해당한다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.3.2</span>
+      <h3 class="subsection-title">논문 구성</h3>
+    </div>
+
+    <p class="paragraph">본 연구는 초록과 부록을 포함하여 총 8개 장으로 구성된다. 각 장의 핵심 내용과 상호 관계는 다음과 같다.</p>
+
+    <div class="flow-chart">
+      <div class="flow-item">
+        <div class="flow-number">제1장</div>
+        <div class="flow-title">서 론</div>
+        <div class="flow-desc">연구 배경·목적·방법·선행연구 차별성</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제2장</div>
+        <div class="flow-title">인구절벽과 소방 인력 위기</div>
+        <div class="flow-desc">초고령사회 진입, 소방 인력 고령화, 3교대 근무 위험성</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제3장</div>
+        <div class="flow-title">피지컬AI 기술 동향 및 제도 현황</div>
+        <div class="flow-desc">기술 분류, 시장 전망, 해외 소방 적용 사례, 관련 법령</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제4장</div>
+        <div class="flow-title">연구 방법: 현장 인식도 조사</div>
+        <div class="flow-desc">설문 결과 분석, 5대 정책과제 도출 (→제5장 연결)</div>
+      </div>
+      <div class="flow-item star">
+        <div class="flow-number">제5장</div>
+        <div class="flow-title">피지컬AI 소방 현장 도입 연구 <span class="star-badge">★핵심</span></div>
+        <div class="flow-desc">분야별 활용 방안, 경제성(CBA), 법·규제, 기술 한계</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제6장</div>
+        <div class="flow-title">소방 교육기관의 역할 재정립</div>
+        <div class="flow-desc">교육 패러다임 전환, 전담요원 양성, 훈련 데이터 축적</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제7장</div>
+        <div class="flow-title">단계별 도입 로드맵 및 기대효과</div>
+        <div class="flow-desc"><strong style="color:var(--accent);">★5년 집중 로드맵(2026~2030)</strong> + 10년 확산 방향(2031~2040)</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-number">제8장</div>
+        <div class="flow-title">결론 및 정책 제언</div>
+        <div class="flow-desc">연구 요약, 주체별 정책 제언, 향후 과제</div>
+      </div>
+    </div>
+    <div class="table-caption">&lt;표 1-2&gt; 논문의 장별 구성</div>
+
+    <p class="paragraph">
+      제4장의 설문 결과에서 도출된 5대 정책과제는 제5장의 각 절과 <span class="highlight-navy">1:1 매핑</span>되어, 현장 수요 → 정책과제 → 구체적 해법의 논리적 연쇄를 형성한다. 또한 제5장의 핵심 논거는 제7장의 로드맵과 제8장의 정책 제언으로 수렴된다.
+    </p>
+
+    <!-- ============ 1.4 선행연구 검토 및 연구의 차별성 ============ -->
+    <div class="section" id="sec-1-4">
+      <div class="section-number">SECTION 1.4</div>
+      <h2 class="section-title">선행연구 검토 및 연구의 차별성</h2>
+    </div>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.4.1</span>
+      <h3 class="subsection-title">국내 선행연구</h3>
+    </div>
+
+    <p class="paragraph">
+      국내에서는 그간 소방 로봇 활용에 관한 단발적 연구와 정책 논의가 존재해 왔다. 영남대학교에서 발표된 <cite>「4차 산업혁명 시대의 소방산업 발전방향에 대한 고찰」</cite> 등 소방산업 차원의 거시적 논의가 있으며, 관계부처 합동으로 발표된 <cite>「첨단로봇 규제혁신 방안」(2023)</cite>과 같은 정부 문서는 첨단로봇 전반의 규제 완화 방향을 제시한다. 또한 송도영(2025)의 <cite>「휴머노이드 로봇 활성화 위한 법체계 정비와 규제 개선」</cite> 등 법제 연구가 진행된 바 있다.
+    </p>
+
+    <p class="paragraph">
+      <span class="highlight-navy">그러나 이러한 선행연구들은 대체로 다음 한계를 지닌다.</span> 첫째, 기술 동향·법제도 논의 중심으로 소방 현장 적용이 구체적이지 않다. 둘째, 인구절벽이라는 거시 변수와의 구조적 연결이 부족하다. 셋째, 현장 소방공무원을 대상으로 한 대규모 실증 데이터가 없다. 넷째, 화재·구조·구급 분야별 구체적 활용 매뉴얼이 부재하다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.4.2</span>
+      <h3 class="subsection-title">국외 선행연구</h3>
+    </div>
+
+    <p class="paragraph">
+      해외에서는 휴머노이드 로봇 일반에 대한 기술·경제 연구가 활발히 이루어지고 있다. 주요 글로벌 투자은행과 시장조사기관들은 휴머노이드 로봇 시장의 성장을 전망하고 있으나, 구체적 수치는 기관별로 편차가 크므로 본 연구에서는 <em style="color:var(--gray-500);">본론(제3장)에서 검증된 원문 출처를 통해 인용</em>할 예정이다.
+    </p>
+
+    <p class="paragraph">
+      그러나 이들 연구는 대체로 제조업·물류·가사 서비스에 초점을 두며, <span class="highlight-num">소방·재난 분야에 특화된 학술 연구는 여전히 제한적</span>이다. 실전 배치 수준에서는 미국 LAFD의 Thermite 원격조종 로봇, 일본 총무성 소방청의 방재 로봇 시험 프로젝트, UAE 두바이 소방 드론 시스템 등이 보고되고 있으나, 이들을 학술적으로 종합 비교한 연구는 본 연구 이전에는 확인되지 않았다.
+    </p>
+
+    <p class="paragraph">
+      또한 자율주행 분야의 <span class="italic-term">"롱테일 문제(Long-Tail Problem)"</span> 연구는 비정형 환경에서의 AI 성능 저하 현상을 체계적으로 분석해 왔으나, 이를 소방 현장의 비정형 재난 환경에 이론적으로 적용하여 데이터 확보 전략을 도출한 연구는 확인되지 않는다. 본 연구는 이 지점을 <strong>핵심적 독창 기여점</strong>으로 삼는다.
+    </p>
+
+    <div class="subsection">
+      <span class="subsection-badge">1.4.3</span>
+      <h3 class="subsection-title">본 연구의 차별성</h3>
+    </div>
+
+    <p class="paragraph">본 연구는 다음 다섯 가지 측면에서 기존 연구와 뚜렷이 차별화된다.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <div class="diff-title">학제적 통합성</div>
+        <div class="diff-desc">기술·경제·법제·교육·윤리를 통합적으로 검토하는 국내 최초의 <strong style="color:var(--accent);">피지컬AI × 소방</strong> 학제적 연구</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <div class="diff-title">거시-미시 연결</div>
+        <div class="diff-desc">'인구절벽' 거시 변수와 '소방 인력 위기' 미시 과제를 구조적으로 연결하는 새로운 접근</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <div class="diff-title">실증적 현장 데이터</div>
+        <div class="diff-desc">인천소방본부 <strong style="color:var(--accent);">349명</strong> 대상 대규모 설문조사를 통한 국내 최초 실증 연구</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <div class="diff-title">구체적 활용 매뉴얼</div>
+        <div class="diff-desc">화재·구조·구급 3대 분야의 구체적 활용 시나리오와 현장 대응 매뉴얼 초안 개발</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">05</div>
+        <div class="diff-title">5년 집중형 로드맵</div>
+        <div class="diff-desc"><strong style="color:var(--accent);">초기 5년(2026~2030) 집중</strong> 연도별·분기별 이정표와 KPI로 구체화, 이후 10년 확산 개괄. 1개 정부 임기 내 실현 가능</div>
+      </div>
+    </div>
+
+    <p class="paragraph">
+      <span class="order-label">첫째, 학제적 통합성.</span> 기술·경제·법제·교육·윤리를 통합적으로 검토하는 국내 최초의 <span class="highlight-num">피지컬AI × 소방</span> 학제적 연구이다. 단일 분야의 시각을 넘어 공공정책 종합 연구로서의 성격을 갖는다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">둘째, 거시-미시 연결.</span> '인구절벽'이라는 거시 변수와 '소방 인력 위기'라는 미시 과제를 구조적으로 연결하였다. 이는 기존의 기술 중심 로봇 논의와 근본적으로 다른 접근이며, <span class="highlight-navy">사회구조적 맥락 속에서 기술의 역할을 재정의</span>한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">셋째, 실증적 현장 데이터.</span> 인천소방본부 소속 소방공무원 <span class="highlight-num">349명</span> 대상의 대규모 설문조사를 통해 현장 수요를 실증적으로 확보한 국내 최초의 연구이다. 특히 화재 분야 종사자가 50.72%를 차지하여 현장 대표성이 높다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">넷째, 구체적 활용 매뉴얼.</span> 화재·구조·구급 3대 분야에서 피지컬AI 활용의 구체적 시나리오와 매뉴얼 초안을 개발하여 실행력을 갖춘다. 이는 정책 논의에 그치지 않고 현장 적용 가능한 결과물을 산출함을 의미한다.
+    </p>
+
+    <p class="paragraph">
+      <span class="order-label">다섯째, 5년 집중형 실행 로드맵.</span> 원대하지만 모호한 장기 계획 대신 <span class="highlight-num">초기 5년(2026~2030)의 집중 도입 로드맵</span>을 연도별·분기별 이정표와 정량 지표(KPI)로 구체화하였다. 이후 10년(2031~2040)의 확산 방향을 개괄적으로 제시함으로써 단기 실행력과 중장기 전망을 동시에 확보한다. 또한 법령 개정·교육과정 설계·예산 확보 등 주체별 정책 제언을 통합적으로 제시하여 <span class="highlight-navy">1개 정부 임기 내 실현 가능한 현실성</span>을 극대화한다.
+    </p>
+
+    <p class="paragraph">
+      이러한 차별성을 통해 본 연구는 <strong style="color:var(--navy);">소방학 및 공공정책 분야의 학술적 공헌</strong>과 <strong style="color:var(--navy);">소방행정의 실무적 기여</strong>를 동시에 달성하고자 한다.
+    </p>
+
+  </main>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 1 · 서론 · END</div>
+      <div class="footer-next" onclick="switchTab('ch2')">▶ 다음: 제2장 · 인구절벽과 소방 인력 위기</div>
+    </div>
+    <div class="footer-info">
+      제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026
+    </div>
+  </footer>
+</div>
+
+
+<!-- ───── 제2장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch2">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">02</div>
+    <h1 class="chapter-title">인구절벽과 소방 인력 위기</h1>
+    <p class="chapter-subtitle">Demographic Cliff & Fire Service Workforce Crisis</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>아래는 본 장의 목차 구성안이며, 각 절은 후속 작업을 통해 본문이 작성될 예정입니다. (목표 분량 12p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">2.1</span> 인구절벽·초고령사회 진입과 소방 인력 수급 위기 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">6p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.1.1</span>
+            <span class="outline-item-name">초고령사회 진입(2025)의 사회·경제적 함의</span>
+          </div>
+          <div class="outline-item-desc">고령화 사회→고령사회→초고령사회 25년 진행, 세계 최고 속도. 경제활동인구 감소·재정 부담 분석.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.1.2</span>
+            <span class="outline-item-name">소방공무원 고령화 추이 및 신규임용 연령 폐지</span>
+          </div>
+          <div class="outline-item-desc">2014~2024년 연령대별 추이, 신규임용 상한 폐지 정책의 의미와 한계.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.1.3</span>
+            <span class="outline-item-name">표준인력 충족률 분석 (전국·지역별)</span>
+          </div>
+          <div class="outline-item-desc">소방력 표준 대비 충족률, 1인당 담당인구(766명)의 의미, 시도별 격차.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">2.2</span> 3교대 근무의 위험성과 현장 실태 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">6p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.2.1</span>
+            <span class="outline-item-name">신체적·심리적 피로 누적과 PTSD</span>
+          </div>
+          <div class="outline-item-desc">3교대 근무의 의학적 위험성, 직업병 통계, 심리적 트라우마.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.2.2</span>
+            <span class="outline-item-name">순직·공상 통계 분석 (최근 10년)</span>
+          </div>
+          <div class="outline-item-desc">2014~2024년 순직·공상 추이, 사고 유형별 분류, VSL 기반 사회적 비용.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head">
+            <span class="outline-item-num">2.2.3</span>
+            <span class="outline-item-name">4교대 전환 필요성과 현실적 제약</span>
+          </div>
+          <div class="outline-item-desc">선진국 사례 비교, 4교대 전환 시 추가 소요 인력, 피지컬AI 도입과의 연계.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 2 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch3')">▶ 다음: 제3장 · 피지컬AI 기술 동향</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+<!-- ───── 제3장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch3">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">03</div>
+    <h1 class="chapter-title">피지컬AI 기술 동향 및 제도 현황</h1>
+    <p class="chapter-subtitle">Physical AI Technology Trends & Institutional Status</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>아래는 본 장의 목차 구성안이며, 각 절은 후속 작업을 통해 본문이 작성될 예정입니다. (목표 분량 14p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">3.1</span> 피지컬AI 개념 정의 및 기술 분류 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">4p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.1.1</span><span class="outline-item-name">피지컬AI vs 지능형로봇 개념 구분</span></div>
+          <div class="outline-item-desc">전통 로봇·지능형 로봇·피지컬AI의 차이 — LLM 기반 추론 능력의 통합.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.1.2</span><span class="outline-item-name">AI 발전 단계(Narrow → AGI → ASI)와의 연동</span></div>
+          <div class="outline-item-desc">디지털 AI에서 피지컬 AI로의 패러다임 전환, AGI/ASI 진입과 신체화의 의미.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.1.3</span><span class="outline-item-name">휴머노이드 중심 분류 체계</span></div>
+          <div class="outline-item-desc">형태(휴머노이드/4족/드론)·기능(작업/이동/판단) 기준 분류, 소방 적용 가능성 평가.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">3.2</span> 국내외 피지컬AI 기업·기술 현황 및 시장 전망 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">4p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.2.1</span><span class="outline-item-name">글로벌 주요 기업·제품 비교</span></div>
+          <div class="outline-item-desc">Tesla Optimus / Figure 02 / Boston Dynamics Atlas / Unitree H1·G1 사양·가격·성숙도 비교표.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.2.2</span><span class="outline-item-name">시장 성장률(CAGR) 및 기술 성숙도</span></div>
+          <div class="outline-item-desc">기관별 시장전망(Goldman Sachs·Morgan Stanley·BofA), TRL 단계별 평가.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">3.3</span> 해외 소방 분야 피지컬AI 적용 사례 비교 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.3.1</span><span class="outline-item-name">미국·일본·UAE·중국 사례 비교</span></div>
+          <div class="outline-item-desc">LAFD Thermite / 일본 방재로봇 시험 / 두바이 소방드론 / 중국 실전 배치 사례 비교표·시사점.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">3.4</span> 관련 법령 및 정책 현황 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.4.1</span><span class="outline-item-name">국내 법령 체계 분석</span></div>
+          <div class="outline-item-desc">지능형로봇법(2025.10 시행) / 소방기본법·소방공무원법 / 제4차 지능형로봇 기본계획.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">3.4.2</span><span class="outline-item-name">소방청 AI 전환 정책</span></div>
+          <div class="outline-item-desc">소방청 AI 전환 무인소방로봇 100대 보급 계획, 첨단로봇 규제혁신 방안 검토.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 3 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch4')">▶ 다음: 제4장 · 현장 인식도 조사</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+
+<!-- ───── 제4장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch4">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">04</div>
+    <h1 class="chapter-title">현장 인식도 조사</h1>
+    <p class="chapter-subtitle">Field Perception Survey · n=349</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>인천소방본부 소속 소방공무원 349명 대상 설문조사(13문항·리커트 5점) 결과를 분석합니다. (목표 분량 14p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">4.1</span> 설문조사 개요 및 응답자 특성 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.1.1</span><span class="outline-item-name">조사 설계 및 방법</span></div>
+          <div class="outline-item-desc">조사 기간(2026.2.27~3.20), 표본 설계, 신뢰도 검증, 윤리적 고려사항.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.1.2</span><span class="outline-item-name">응답자 인구통계학적 특성</span></div>
+          <div class="outline-item-desc">직급·연령(40~50대 70.49%)·근무분야(화재 50.72%)·근속연수 분포 분석.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">4.2</span> 설문 결과 분석 (13개 문항) <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">8p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.2.1</span><span class="outline-item-name">고령화 인식 및 인력 한계 (Q1~Q3)</span></div>
+          <div class="outline-item-desc">현장 고령화 추세(69.63%)·체력 한계 인식·인력 충원의 어려움.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.2.2</span><span class="outline-item-name">피지컬AI 도입 인식 (Q4~Q7)</span></div>
+          <div class="outline-item-desc">도입 불가피성(71.18%)·전담체계 필요성(78.51%)·교육훈련 필요성(86.25%)·비정형 상황(88.83%).</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.2.3</span><span class="outline-item-name">근무환경 및 4교대 (Q8~Q13)</span></div>
+          <div class="outline-item-desc">3교대 피로도·4교대 전환 의향·순직 우려·정책 제안 등 자유응답 분석.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">4.3</span> 설문 결과 종합 및 5대 정책과제 도출 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.3.1</span><span class="outline-item-name">5대 정책과제 도출 → 제5장 1:1 매핑</span></div>
+          <div class="outline-item-desc">현장 수요→과제→해법의 논리적 연쇄 구축. 제5장 5개 절과 직결.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">4.3.2</span><span class="outline-item-name">도입 장벽·촉진 요인 구조화</span></div>
+          <div class="outline-item-desc">기술·예산·법제·인식·교육 5대 차원의 장벽과 촉진요인 매트릭스.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 4 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch5')">▶ 다음: 제5장 · 피지컬AI 소방 현장 도입 ★핵심★</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+<!-- ───── 제5장 ★핵심★ (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch5">
+  <header class="chapter-header" style="background: linear-gradient(135deg, #5C0000 0%, #8B0000 50%, #C00000 100%);">
+    <div class="chapter-label">C H A P T E R · ★ C O R E ★</div>
+    <div class="chapter-number">05</div>
+    <h1 class="chapter-title">피지컬AI 소방 현장 도입 연구</h1>
+    <p class="chapter-subtitle">Physical AI Field Deployment Strategy</p>
+    <div class="chapter-meta">★ 본 연구의 핵심 장 (25p) · 인천소방학교 전임교수 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice" style="border-color: var(--accent); background: linear-gradient(135deg, #fef2f2, #fff);">
+      <div class="placeholder-icon">⭐</div>
+      <div class="placeholder-text">
+        <h4 style="color: var(--accent);">본 연구의 핵심 장 — 집필 진행 중</h4>
+        <p>화재·구조·구급 분야별 활용 방안, CBA 경제성 분석, 법·규제·윤리, 롱테일 문제, 격무지 도입 전략을 다룹니다. (목표 분량 25p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title" style="border-bottom-color: var(--accent);"><span class="ot-num" style="background: var(--accent);">5.1</span> 분야별 피지컬AI 활용 방안 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">8p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.1.1</span><span class="outline-item-name">화재 분야 활용 방안</span></div>
+          <div class="outline-item-desc">선행정찰·내부 진입·호스 보조·잔화 처리·인명 검색 시나리오. 현장 지휘체계 연계 방안.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.1.2</span><span class="outline-item-name">구조 분야 활용 방안</span></div>
+          <div class="outline-item-desc">붕괴 현장(잔해 진입)·수중 구조·산악 구조 시나리오. 휴머노이드 vs 특수형 로봇 비교.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.1.3</span><span class="outline-item-name">구급 분야 활용 방안</span></div>
+          <div class="outline-item-desc">CPR 보조·환자 이송·트리아지(다수 사상자) 지원. 의료진과의 협업 모델.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.1.4</span><span class="outline-item-name">현장 대응 매뉴얼 초안</span></div>
+          <div class="outline-item-desc">표준작전절차(SOP) 통합 매뉴얼, 출동→배치→철수 단계별 운용 지침.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title" style="border-bottom-color: var(--accent);"><span class="ot-num" style="background: var(--accent);">5.2</span> 경제성 분석 (CBA 프레임) <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">6p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.2.1</span><span class="outline-item-name">생애주기비용 비교 (소방관 vs 피지컬AI)</span></div>
+          <div class="outline-item-desc">소방관 1인 27~30억 vs 피지컬AI 4~5억 (30년) — 6배 격차의 정량적 근거.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.2.2</span><span class="outline-item-name">비용편익분석(CBA) 프레임 적용</span></div>
+          <div class="outline-item-desc">할인율 적용·시나리오 분석(낙관/중립/비관)·민감도 분석.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.2.3</span><span class="outline-item-name">VSL 기반 순직 방지 가치 정량화</span></div>
+          <div class="outline-item-desc">통계적 생명가치(VSL) 적용으로 무형 편익(생명 보호)의 화폐화.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title" style="border-bottom-color: var(--accent);"><span class="ot-num" style="background: var(--accent);">5.3</span> 법·규제 및 윤리적 한계와 해결 방안 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">5p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.3.1</span><span class="outline-item-name">현행 법령 공백 분석</span></div>
+          <div class="outline-item-desc">소방기본법·국가배상법·제조물책임법 등 책임 귀속 공백 영역 분석.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.3.2</span><span class="outline-item-name">규제샌드박스 단기 방안 + 소방기본법 개정안</span></div>
+          <div class="outline-item-desc">규제샌드박스 활용 시범 운용 → 법령 정비 단계별 로드맵.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.3.3</span><span class="outline-item-name">윤리 프레임워크 (Human-in-the-Loop)</span></div>
+          <div class="outline-item-desc">AI 트리아지 윤리 가이드라인, 인간 통제 유지 원칙, 책임 분배 체계.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title" style="border-bottom-color: var(--accent);"><span class="ot-num" style="background: var(--accent);">5.4</span> 기술적 한계: 롱테일 문제와 데이터 확보 전략 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.4.1</span><span class="outline-item-name">소방 현장의 롱테일 환경 특성</span></div>
+          <div class="outline-item-desc">자율주행 사례 비교, 비정형 재난(88.83%)에서 AI 성능 저하 메커니즘.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.4.2</span><span class="outline-item-name">소방학교 훈련 데이터 축적 + 시뮬레이션 보완</span></div>
+          <div class="outline-item-desc">훈련시설 데이터 표준화, Sim-to-Real 전이 학습, 데이터 허브 구축 전략.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title" style="border-bottom-color: var(--accent);"><span class="ot-num" style="background: var(--accent);">5.5</span> 격무지 분석 및 우선 도입 전략 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.5.1</span><span class="outline-item-name">전국 격무 소방서 현황 분석</span></div>
+          <div class="outline-item-desc">출동건수·위험도·인력충족률 3대 지표로 격무지 분류, 시도별 분포.</div>
+        </div>
+        <div class="outline-item" style="border-left-color: var(--accent);">
+          <div class="outline-item-head"><span class="outline-item-num">5.5.2</span><span class="outline-item-name">시범 운용 소방서 선정 방안</span></div>
+          <div class="outline-item-desc">우선 투입 기준, 시범 운용 평가지표(KPI), 확산 단계별 선정 로직.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 5 · ★핵심★ · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch6')">▶ 다음: 제6장 · 소방 교육기관의 역할</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+
+<!-- ───── 제6장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch6">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">06</div>
+    <h1 class="chapter-title">소방 교육기관의 역할 재정립</h1>
+    <p class="chapter-subtitle">Repositioning Fire Service Education</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>피지컬AI 시대 소방 교육의 패러다임 전환과 전담요원 양성 방안을 다룹니다. (목표 분량 10p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">6.1</span> 피지컬AI 시대 소방 교육의 패러다임 전환 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.1.1</span><span class="outline-item-name">체력·기술 중심 → AI 협업·운용 역량 중심</span></div>
+          <div class="outline-item-desc">기존 교육 패러다임의 한계, 인간-AI 협업 시대의 새로운 역량 모델 제시.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.1.2</span><span class="outline-item-name">교육목표 재설정</span></div>
+          <div class="outline-item-desc">기초/중급/고급 단계별 교육목표, 핵심역량(KSA) 매트릭스 재정립.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">6.2</span> 전담요원 양성 교육과정 설계 (안) <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">4p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.2.1</span><span class="outline-item-name">전담요원 직무 정의</span></div>
+          <div class="outline-item-desc">피지컬AI 운용·정비·현장 통합지휘 등 직무 분류, 자격 요건.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.2.2</span><span class="outline-item-name">이론·실기·시뮬레이션 과목 구성</span></div>
+          <div class="outline-item-desc">AI 기초 이론 / 로봇 운용 실기 / VR 시뮬레이션 / 현장 실습 과정 설계.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.2.3</span><span class="outline-item-name">중앙·지방소방학교 역할 분담</span></div>
+          <div class="outline-item-desc">중앙(고급·전문)·지방(기초·보수) 분담 모델, 인천소방학교의 시범 모델화 전략.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">6.3</span> 훈련 데이터 축적 시스템 설계 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.3.1</span><span class="outline-item-name">소방학교 훈련 중 피지컬AI 병행 운용</span></div>
+          <div class="outline-item-desc">실제 훈련시설에서 AI가 학습할 수 있는 데이터 수집 환경 구축.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">6.3.2</span><span class="outline-item-name">재난 시뮬레이션 데이터 표준화 + 클라우드 DB</span></div>
+          <div class="outline-item-desc">전국 소방학교 데이터 표준 포맷 + 중앙 클라우드 허브 → 피지컬AI 학습 자원화.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 6 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch7')">▶ 다음: 제7장 · 단계별 도입 로드맵</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+<!-- ───── 제7장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch7">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">07</div>
+    <h1 class="chapter-title">단계별 도입 로드맵 및 기대효과</h1>
+    <p class="chapter-subtitle">Phased Roadmap & Expected Outcomes (2026~2040)</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>2026~2040년 3단계 도입 로드맵과 4교대 전환·예산 절감 등 기대효과를 다룹니다. (목표 분량 8p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">7.1</span> 3단계 도입 로드맵 (2026~2040) <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">5p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.1.1</span><span class="outline-item-name">1단계 · 준비·시범 ('26~'28)</span></div>
+          <div class="outline-item-desc">법·제도 정비, 시범 배치 5~10대, 전담요원 1기 양성, 매뉴얼 초안 작성. AI Narrow 단계.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.1.2</span><span class="outline-item-name">2단계 · 확산·학습 ('29~'32)</span></div>
+          <div class="outline-item-desc">격무지 50개소 보급, 데이터 축적 본격화, 분야별 매뉴얼 정착, 4교대 시범 시도. AGI 진입 시기.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.1.3</span><span class="outline-item-name">3단계 · 전국 보급 ('33~'40)</span></div>
+          <div class="outline-item-desc">전국 소방서 단위 보급, 4교대 전국 전환, 국가 소방력 구조 재편. ASI 연동 가능성 검토.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.1.4</span><span class="outline-item-name">AI 기술단계(Narrow→AGI→ASI)와의 연동</span></div>
+          <div class="outline-item-desc">기술 발전 단계와 도입 단계의 정합성 분석, 단계별 위험관리 전략.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">7.2</span> 기대 효과 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">3p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.2.1</span><span class="outline-item-name">4교대 전환 가능성 + 순직·공상 감소</span></div>
+          <div class="outline-item-desc">위험 임무 AI 대체로 인력 여유 확보 → 4교대 전환 + 인적 사고 감소 추정.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.2.2</span><span class="outline-item-name">예산 절감 + 소방력 증강</span></div>
+          <div class="outline-item-desc">생애주기비용 6배 격차 활용 → 동일 예산으로 더 많은 소방력 확보 가능성 분석.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">7.2.3</span><span class="outline-item-name">사회적 파급효과</span></div>
+          <div class="outline-item-desc">국민 안전 체감도 향상, 소방 직업 매력도 제고, K-로봇 산업 활성화 연계.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 7 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('ch8')">▶ 다음: 제8장 · 결론 및 정책 제언</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+
+<!-- ───── 제8장 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-ch8">
+  <header class="chapter-header">
+    <div class="chapter-label">C H A P T E R</div>
+    <div class="chapter-number">08</div>
+    <h1 class="chapter-title">결론 및 정책 제언</h1>
+    <p class="chapter-subtitle">Conclusion & Policy Recommendations</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📝</div>
+      <div class="placeholder-text">
+        <h4>본 장은 집필 진행 중입니다</h4>
+        <p>연구 결과 종합과 4주체별(소방청·국회·소방학교·예산당국) 정책 제언을 다룹니다. (목표 분량 5p)</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">8.1</span> 연구 결과 요약 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">2p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.1.1</span><span class="outline-item-name">연구 목적 대비 성과 검토</span></div>
+          <div class="outline-item-desc">3대 연구 목적(학제적 분석·실증·로드맵) 달성도 평가.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.1.2</span><span class="outline-item-name">핵심 발견 5가지 정리</span></div>
+          <div class="outline-item-desc">① 삼중 구조적 압박 ② 88.83% 비정형 동의 ③ 6배 경제적 우위 ④ 롱테일 해법 ⑤ 골든 타임.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">8.2</span> 정책 제언 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">2p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.2.1</span><span class="outline-item-name">소방청 대상 제언</span></div>
+          <div class="outline-item-desc">전담조직 설치, 시범사업 설계, 표준운영절차(SOP) 개발 추진.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.2.2</span><span class="outline-item-name">국회 대상 제언 (법령 개정)</span></div>
+          <div class="outline-item-desc">소방기본법·소방공무원법 개정안, 책임귀속 명문화, 규제샌드박스 근거 마련.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.2.3</span><span class="outline-item-name">소방학교 대상 제언 (교육과정)</span></div>
+          <div class="outline-item-desc">전담요원 교육과정 신설, 데이터 허브화, 중앙·지방 역할 분담 체계화.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.2.4</span><span class="outline-item-name">예산당국 대상 제언 (재정 확보)</span></div>
+          <div class="outline-item-desc">5년 집중 도입 예산 확보, 생애주기비용 분석에 기반한 재정전략 수립.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">8.3</span> 연구의 한계와 향후 과제 <span style="margin-left:auto;font-size:11px;color:var(--gray-500);font-weight:normal;">1p</span></h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.3.1</span><span class="outline-item-name">연구의 한계</span></div>
+          <div class="outline-item-desc">연구 대상 지역적 한계(인천), 기술 불확실성, 외부 환경 변화 변수.</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">8.3.2</span><span class="outline-item-name">향후 연구 방향</span></div>
+          <div class="outline-item-desc">전국 단위 후속 설문, 시범 운용 결과 분석, 국제 비교 연구 제안.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">CHAPTER 8 · 집필 진행 중</div>
+      <div class="footer-next" onclick="switchTab('appendix')">▶ 다음: 부록 (Appendix)</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+<!-- ───── 부록 (플레이스홀더) ───── -->
+<div class="tab-pane" id="pane-appendix">
+  <header class="chapter-header" style="background: linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #4A6278 100%);">
+    <div class="chapter-label">A P P E N D I X</div>
+    <div class="chapter-number" style="font-size: 80px;">附</div>
+    <h1 class="chapter-title">부 록</h1>
+    <p class="chapter-subtitle">Appendix · Tables · Figures · References</p>
+    <div class="chapter-meta">인구절벽시대 피지컬AI 소방현장활동 도입 연구 · 권유진 · 2026</div>
+  </header>
+
+  <div class="placeholder-content">
+    <div class="placeholder-notice">
+      <div class="placeholder-icon">📎</div>
+      <div class="placeholder-text">
+        <h4>부록은 본문 완성 후 정리 예정입니다</h4>
+        <p>설문지 원본·표·그림 목록·참고문헌이 수록될 예정입니다.</p>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">①</span> 설문지 원본 (Survey Questionnaire)</h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">A.1</span><span class="outline-item-name">13개 문항 전문 + 리커트 5점 척도</span></div>
+          <div class="outline-item-desc">고령화 인식·도입 불가피성·전담체계·교육훈련·비정형 상황·4교대·자유응답 등.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">②</span> 표 목록 (List of Tables)</h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">A.2</span><span class="outline-item-name">전체 표 일람 (예시)</span></div>
+          <div class="outline-item-desc">&lt;표 1-1&gt; 본 연구의 복합 방법론 / &lt;표 1-2&gt; 논문의 장별 구성 / &lt;표 4-x&gt; 설문 결과 요약 / &lt;표 5-x&gt; 글로벌 휴머노이드 비교 / &lt;표 5-x&gt; 생애주기비용 비교 등.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">③</span> 그림 목록 (List of Figures)</h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">A.3</span><span class="outline-item-name">전체 그림 일람</span></div>
+          <div class="outline-item-desc">3단계 로드맵 그림, 설문 결과 그래프, 해외 사례 비교표, 생애주기비용 도식, 5년 집중 마일스톤 차트.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outline-section">
+      <h3 class="outline-title"><span class="ot-num">④</span> 참고문헌 (References)</h3>
+      <div class="outline-list">
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">A.4.1</span><span class="outline-item-name">국내 자료</span></div>
+          <div class="outline-item-desc">국내 학술논문 / 소방청 통계연보 / 법령(지능형로봇법, 소방기본법 등) / 정책 자료(제4차 지능형로봇 기본계획).</div>
+        </div>
+        <div class="outline-item">
+          <div class="outline-item-head"><span class="outline-item-num">A.4.2</span><span class="outline-item-name">국외 자료</span></div>
+          <div class="outline-item-desc">해외 학술논문 / 시장조사 보고서(Goldman Sachs, Morgan Stanley 등) / 해외 소방 사례 자료(LAFD, 일본 총무성 소방청, 두바이 소방).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chapter-footer">
+    <div class="footer-divider">◆  ◆  ◆</div>
+    <div class="footer-nav">
+      <div class="footer-current">APPENDIX · 정리 예정</div>
+      <div class="footer-next" onclick="switchTab('cover')">▲ 처음으로 (표지·목차)</div>
+    </div>
+    <div class="footer-info">제31회 중앙소방학교 교육혁신 연구개발 경연대회 · 인천소방학교 전임교수 권유진 · 2026</div>
+  </footer>
+</div>
+
+</div><!-- /main-wrapper -->
+
+<script>
+  // 탭 전환 함수
+  function switchTab(tabId) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    
+    // 선택한 탭 활성화
+    const targetBtn = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
+    const targetPane = document.getElementById('pane-' + tabId);
+    if (targetBtn) targetBtn.classList.add('active');
+    if (targetPane) targetPane.classList.add('active');
+    
+    // 상단으로 부드럽게 스크롤
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 모든 탭 버튼에 클릭 이벤트 등록
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  // 키보드 단축키: 좌우 화살표로 탭 이동
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const tabs = ['cover','abstract','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','appendix'];
+    const activeBtn = document.querySelector('.tab-btn.active');
+    if (!activeBtn) return;
+    const idx = tabs.indexOf(activeBtn.dataset.tab);
+    if (e.key === 'ArrowRight' && idx < tabs.length - 1) switchTab(tabs[idx + 1]);
+    else if (e.key === 'ArrowLeft' && idx > 0) switchTab(tabs[idx - 1]);
+  });
+</script>
+
+</body>
+</html>
