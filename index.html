@@ -505,6 +505,10 @@ table td {
 table tr.tr-odd td { background: var(--row-stripe); }
 table tr.tr-even td { background: white; }
 table td strong { color: var(--navy); }
+/* 헤더 셀 내부의 강조는 흰색 유지 (네이비 배경과 충돌 방지) */
+table th strong,
+table th em,
+table th * { color: white !important; }
 
 .source {
   font-size: 12.5px;
@@ -927,9 +931,9 @@ table td strong { color: var(--navy); }
 <p>본 연구는 단일 방법론으로는 포착하기 어려운 현상의 복합성을 고려하여, 다음 다섯 가지 방법을 복합적으로 채택한다.</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>방법론</strong></th>
-<th><strong>주요 내용</strong></th>
+<th>구분</th>
+<th>방법론</th>
+<th>주요 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>①</strong></td>
@@ -963,9 +967,9 @@ table td strong { color: var(--navy); }
 <p>본 연구는 초록과 부록을 포함하여 총 8개 장으로 구성된다. 각 장의 핵심 내용과 상호 관계는 다음과 같다.</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>장</strong></th>
-<th><strong>제목</strong></th>
-<th><strong>핵심 내용</strong></th>
+<th>장</th>
+<th>제목</th>
+<th>핵심 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>제1장</strong></td>
@@ -1055,10 +1059,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-1 &gt;  대한민국 고령화 단계별 진입 시기</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>연도</strong></th>
-<th><strong>65세 이상 비율</strong></th>
-<th><strong>주요 시사점</strong></th>
+<th>구분</th>
+<th>연도</th>
+<th>65세 이상 비율</th>
+<th>주요 시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>고령화 사회</strong></td>
@@ -1083,10 +1087,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-2 &gt;  한국 총인구 및 청년인구 추이 (통계청 중위 추계)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>2024년</strong></th>
-<th><strong>2030년</strong></th>
-<th><strong>2040년</strong></th>
+<th>구분</th>
+<th>2024년</th>
+<th>2030년</th>
+<th>2040년</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>총인구</strong></td>
@@ -1115,11 +1119,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-3 &gt;  연도별 화재발생 건수와 재산피해 추이 (2015~2024)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연도</strong></th>
-<th><strong>화재 건수</strong></th>
-<th><strong>재산피해(억원)</strong></th>
-<th><strong>건당 피해(백만원)</strong></th>
-<th><strong>주요 특징</strong></th>
+<th>연도</th>
+<th>화재 건수</th>
+<th>재산피해(억원)</th>
+<th>건당 피해(백만원)</th>
+<th>주요 특징</th>
 </tr>
 <tr class="tr-odd">
 <td>2015</td>
@@ -1188,11 +1192,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-4 &gt;  연도별 대형화재 발생 추이 (2015~2024)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>기간 평균</strong></th>
-<th><strong>연평균 건수</strong></th>
-<th><strong>연평균 사망</strong></th>
-<th><strong>연평균 부상</strong></th>
-<th><strong>연평균 재산피해</strong></th>
+<th>기간 평균</th>
+<th>연평균 건수</th>
+<th>연평균 사망</th>
+<th>연평균 부상</th>
+<th>연평균 재산피해</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>2015~2017</strong></td>
@@ -1234,13 +1238,13 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-5 &gt;  중앙119구조본부 연도별 출동 추이 (2015~2024)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>2015</strong></th>
-<th><strong>2017</strong></th>
-<th><strong>2018</strong></th>
-<th><strong>2019</strong></th>
-<th><strong>2020</strong></th>
-<th><strong>2022</strong></th>
-<th><strong>2024</strong></th>
+<th>2015</th>
+<th>2017</th>
+<th>2018</th>
+<th>2019</th>
+<th>2020</th>
+<th>2022</th>
+<th>2024</th>
 </tr>
 <tr class="tr-odd">
 <td>615</td>
@@ -1273,11 +1277,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-6 &gt;  구조·구급 출동건수 추이 (2015~2024)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연도</strong></th>
-<th><strong>구조 출동(건)</strong></th>
-<th><strong>구급 출동(건)</strong></th>
-<th><strong>합계(건)</strong></th>
-<th><strong>증감률 (15년 대비)</strong></th>
+<th>연도</th>
+<th>구조 출동(건)</th>
+<th>구급 출동(건)</th>
+<th>합계(건)</th>
+<th>증감률 (15년 대비)</th>
 </tr>
 <tr class="tr-odd">
 <td>2015</td>
@@ -1362,10 +1366,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-7 &gt;  전국 소방공무원 연령대별 분포 (2023년 기준)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연령대</strong></th>
-<th><strong>인원(명)</strong></th>
-<th><strong>비율(%)</strong></th>
-<th><strong>시사점</strong></th>
+<th>연령대</th>
+<th>인원(명)</th>
+<th>비율(%)</th>
+<th>시사점</th>
 </tr>
 <tr class="tr-odd">
 <td>30대 이하</td>
@@ -1408,10 +1412,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-8 &gt;  소방공무원 평균 연령 추이 및 2034년 예측 시나리오</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>시점</strong></th>
-<th><strong>평균연령</strong></th>
-<th><strong>50대 이상 비율</strong></th>
-<th><strong>상승 속도</strong></th>
+<th>시점</th>
+<th>평균연령</th>
+<th>50대 이상 비율</th>
+<th>상승 속도</th>
 </tr>
 <tr class="tr-odd">
 <td>2015년 (참고)</td>
@@ -1449,9 +1453,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-9 &gt;  소방 인력 수급 위기의 삼중 압박 구조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>압박 차원</strong></th>
-<th><strong>핵심 요인</strong></th>
-<th><strong>실증 근거</strong></th>
+<th>압박 차원</th>
+<th>핵심 요인</th>
+<th>실증 근거</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 공급 감소 </strong>(외부 변수)</td>
@@ -1496,9 +1500,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-10 &gt;  소방공무원 3교대 근무의 건강 위험에 관한 선행연구 동향</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>위험 영역</strong></th>
-<th><strong>주요 발견</strong></th>
-<th><strong>대표 연구·근거</strong></th>
+<th>위험 영역</th>
+<th>주요 발견</th>
+<th>대표 연구·근거</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>심혈관계 질환</strong></td>
@@ -1539,12 +1543,12 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-11 &gt;  연도별 소방공무원 순직·공상자 현황 (2015~2024)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연도</strong></th>
-<th><strong>합계</strong></th>
-<th><strong>순직</strong></th>
-<th><strong>공상</strong></th>
-<th><strong>10년 전 대비</strong></th>
-<th><strong>주요 특징</strong></th>
+<th>연도</th>
+<th>합계</th>
+<th>순직</th>
+<th>공상</th>
+<th>10년 전 대비</th>
+<th>주요 특징</th>
 </tr>
 <tr class="tr-odd">
 <td>2015</td>
@@ -1611,11 +1615,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 2-12 &gt;  주요 선진국 소방관 근무 체계 비교 (2026년 현재)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>국가</strong></th>
-<th><strong>기본 근무 패턴</strong></th>
-<th><strong>주당 평균</strong></th>
-<th><strong>특징·회복 여건</strong></th>
-<th><strong>시사점</strong></th>
+<th>국가</th>
+<th>기본 근무 패턴</th>
+<th>주당 평균</th>
+<th>특징·회복 여건</th>
+<th>시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>미국</strong></td>
@@ -1710,10 +1714,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 3-1 &gt;  자동화 로봇·지능형 로봇·피지컬AI의 개념 구분</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>자동화 로봇</strong></th>
-<th><strong>지능형 로봇</strong></th>
-<th><strong>피지컬AI</strong></th>
+<th>구분</th>
+<th>자동화 로봇</th>
+<th>지능형 로봇</th>
+<th>피지컬AI</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>작동 원리</strong></td>
@@ -1757,10 +1761,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 3-2 &gt;  피지컬AI의 형태별 분류 및 소방 적합성</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>형태</strong></th>
-<th><strong>주요 특징</strong></th>
-<th><strong>대표 모델</strong></th>
-<th><strong>소방 적용 영역</strong></th>
+<th>형태</th>
+<th>주요 특징</th>
+<th>대표 모델</th>
+<th>소방 적용 영역</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>휴머노이드형  (이족 보행)</strong></td>
@@ -1799,11 +1803,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 3-3 &gt;  글로벌 주요 휴머노이드 피지컬AI 기업·제품 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>국가</strong></th>
-<th><strong>기업</strong></th>
-<th><strong>대표 모델</strong></th>
-<th><strong>주요 특징</strong></th>
-<th><strong>상용화 단계</strong></th>
+<th>국가</th>
+<th>기업</th>
+<th>대표 모델</th>
+<th>주요 특징</th>
+<th>상용화 단계</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>미국</strong></td>
@@ -1888,11 +1892,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 3-4 &gt;  주요국 소방 분야 피지컬AI 적용 사례 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>국가</strong></th>
-<th><strong>대표 사례</strong></th>
-<th><strong>주요 활용</strong></th>
-<th><strong>도입 단계</strong></th>
-<th><strong>시사점</strong></th>
+<th>국가</th>
+<th>대표 사례</th>
+<th>주요 활용</th>
+<th>도입 단계</th>
+<th>시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>미국</strong></td>
@@ -1990,10 +1994,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 3-5 &gt;  한국 피지컬AI 소방 도입의 법·정책 환경 평가</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>현 상태</strong></th>
-<th><strong>평가</strong></th>
-<th><strong>정비 필요사항</strong></th>
+<th>영역</th>
+<th>현 상태</th>
+<th>평가</th>
+<th>정비 필요사항</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>산업법</strong></td>
@@ -2065,8 +2069,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-1 &gt;  설문조사 개요</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>내용</strong></th>
+<th>구분</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>조사 대상</strong></td>
@@ -2108,10 +2112,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-2 &gt;  응답자 근무 분야별 분포 (n=349)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>근무 분야</strong></th>
-<th><strong>응답자 수</strong></th>
-<th><strong>비율(%)</strong></th>
-<th><strong>시사점</strong></th>
+<th>근무 분야</th>
+<th>응답자 수</th>
+<th>비율(%)</th>
+<th>시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>화재</strong></td>
@@ -2174,10 +2178,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-3 &gt;  응답자 계급별 분포 (n=349)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>계급</strong></th>
-<th><strong>응답자 수</strong></th>
-<th><strong>비율(%)</strong></th>
-<th><strong>주요 특징</strong></th>
+<th>계급</th>
+<th>응답자 수</th>
+<th>비율(%)</th>
+<th>주요 특징</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>소방사</strong></td>
@@ -2234,10 +2238,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-4 &gt;  응답자 연령대별 분포 (n=349)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연령대</strong></th>
-<th><strong>응답자 수</strong></th>
-<th><strong>비율(%)</strong></th>
-<th><strong>시사점</strong></th>
+<th>연령대</th>
+<th>응답자 수</th>
+<th>비율(%)</th>
+<th>시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>20대 이하</strong></td>
@@ -2293,12 +2297,12 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-5 &gt;  13개 설문 문항 응답률 종합 (동의율 순, n=349)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>순위</strong></th>
-<th><strong>문항</strong></th>
-<th><strong>문항 내용</strong></th>
-<th><strong>동의율</strong></th>
-<th><strong>평균</strong></th>
-<th><strong>영역</strong></th>
+<th>순위</th>
+<th>문항</th>
+<th>문항 내용</th>
+<th>동의율</th>
+<th>평균</th>
+<th>영역</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1</strong></td>
@@ -2449,10 +2453,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-6 &gt;  비동의율 기준 도입 동력 분류</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>동력 강도</strong></th>
-<th><strong>해당 문항</strong></th>
-<th><strong>비동의율</strong></th>
-<th><strong>정책 시사점</strong></th>
+<th>동력 강도</th>
+<th>해당 문항</th>
+<th>비동의율</th>
+<th>정책 시사점</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>매우 강한 </strong>도입 동력</td>
@@ -2487,10 +2491,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-7 &gt;  설문 결과의 4가지 핵심 메시지</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>메시지</strong></th>
-<th><strong>내용</strong></th>
-<th><strong>핵심 근거</strong></th>
-<th><strong>연결 장</strong></th>
+<th>메시지</th>
+<th>내용</th>
+<th>핵심 근거</th>
+<th>연결 장</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 위기 공감</strong></td>
@@ -2525,11 +2529,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-8 &gt;  설문 결과 → 5대 정책과제 도출 매핑</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>과제</strong></th>
-<th><strong>정책과제명</strong></th>
-<th><strong>도출 근거 (설문)</strong></th>
-<th><strong>핵심 정책 방향</strong></th>
-<th><strong>연결 절</strong></th>
+<th>과제</th>
+<th>정책과제명</th>
+<th>도출 근거 (설문)</th>
+<th>핵심 정책 방향</th>
+<th>연결 절</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>①</strong></td>
@@ -2576,8 +2580,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 4-9 &gt;  피지컬AI 소방 도입의 장벽·촉진 요인 구조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>✅ 촉진 요인 (Drivers)</strong></th>
-<th><strong>⚠ 장벽 요인 (Barriers)</strong></th>
+<th>✅ 촉진 요인 (Drivers)</th>
+<th>⚠ 장벽 요인 (Barriers)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1. 위기에 대한 압도적 공감 </strong>   9번 비정형 88.83% / 2번 고령화 69.63%</td>
@@ -2643,8 +2647,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-1 &gt;  시나리오 F-1: 화재 현장 선행정찰</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2672,8 +2676,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-2 &gt;  시나리오 F-2: 화재 진압 호스 보조 및 방수</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2701,8 +2705,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-3 &gt;  시나리오 F-3: 화재 잔화처리 및 재발화 감시</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2733,8 +2737,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-4 &gt;  시나리오 R-1: 붕괴지 인명탐색</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2762,8 +2766,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-5 &gt;  시나리오 R-2: 수난 구조 보조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2791,8 +2795,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-6 &gt;  시나리오 R-3: 산악 응급환자 운반</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2823,8 +2827,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-7 &gt;  시나리오 E-1: 심정지 환자 CPR 보조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2852,8 +2856,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-8 &gt;  시나리오 E-2: 환자 이송 보조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2881,8 +2885,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-9 &gt;  시나리오 E-3: 다수 환자 트리아지 보조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>내용</strong></th>
+<th>항목</th>
+<th>내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>임무 정의</strong></td>
@@ -2911,11 +2915,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-3-1 &gt;  화재 분야 추가 시나리오 (압축)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>코드</strong></th>
-<th><strong>시나리오명</strong></th>
-<th><strong>적용 환경·임무</strong></th>
-<th><strong>피지컬AI 핵심 역할</strong></th>
-<th><strong>기대 효과</strong></th>
+<th>코드</th>
+<th>시나리오명</th>
+<th>적용 환경·임무</th>
+<th>피지컬AI 핵심 역할</th>
+<th>기대 효과</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>F-4</strong></td>
@@ -2938,11 +2942,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-6-1 &gt;  구조 분야 추가 시나리오 (압축)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>코드</strong></th>
-<th><strong>시나리오명</strong></th>
-<th><strong>적용 환경·임무</strong></th>
-<th><strong>피지컬AI 핵심 역할</strong></th>
-<th><strong>기대 효과</strong></th>
+<th>코드</th>
+<th>시나리오명</th>
+<th>적용 환경·임무</th>
+<th>피지컬AI 핵심 역할</th>
+<th>기대 효과</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>R-4</strong></td>
@@ -2965,11 +2969,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-9-1 &gt;  구급 분야 추가 시나리오 (압축)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>코드</strong></th>
-<th><strong>시나리오명</strong></th>
-<th><strong>적용 환경·임무</strong></th>
-<th><strong>피지컬AI 핵심 역할</strong></th>
-<th><strong>기대 효과</strong></th>
+<th>코드</th>
+<th>시나리오명</th>
+<th>적용 환경·임무</th>
+<th>피지컬AI 핵심 역할</th>
+<th>기대 효과</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>E-4</strong></td>
@@ -2993,11 +2997,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-9-2 &gt;  그 외 분야 시나리오 (압축)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>코드</strong></th>
-<th><strong>시나리오명</strong></th>
-<th><strong>적용 환경·임무</strong></th>
-<th><strong>피지컬AI 핵심 역할</strong></th>
-<th><strong>기대 효과·연계</strong></th>
+<th>코드</th>
+<th>시나리오명</th>
+<th>적용 환경·임무</th>
+<th>피지컬AI 핵심 역할</th>
+<th>기대 효과·연계</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>X-1</strong></td>
@@ -3020,12 +3024,12 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-10 &gt;  17개 활용 시나리오 종합 우선순위 매트릭스</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>순위</strong></th>
-<th><strong>코드</strong></th>
-<th><strong>시나리오</strong></th>
-<th><strong>기술 성숙도</strong></th>
-<th><strong>도입 시급성</strong></th>
-<th><strong>도입 단계</strong></th>
+<th>순위</th>
+<th>코드</th>
+<th>시나리오</th>
+<th>기술 성숙도</th>
+<th>도입 시급성</th>
+<th>도입 단계</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1</strong></td>
@@ -3175,9 +3179,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-11 &gt;  CBA 프레임의 4대 구성요소</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구성요소</strong></th>
-<th><strong>의미</strong></th>
-<th><strong>본 연구 적용</strong></th>
+<th>구성요소</th>
+<th>의미</th>
+<th>본 연구 적용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 비용 (Cost)</strong></td>
@@ -3207,9 +3211,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-12 &gt;  소방관 1인 vs 피지컬AI 1대 30년 비용 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>비용 항목</strong></th>
-<th><strong>소방관 1인 (30년)</strong></th>
-<th><strong>피지컬AI 1대 (30년 환산)</strong></th>
+<th>비용 항목</th>
+<th>소방관 1인 (30년)</th>
+<th>피지컬AI 1대 (30년 환산)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 인건비/도입비</strong></td>
@@ -3251,11 +3255,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-12-1 &gt;  LCC 가정의 민감도 분석 (소방관 1인 30년 기준)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>민감도 변수</strong></th>
-<th><strong>보수적(저위)</strong></th>
-<th><strong>중립(기준)</strong></th>
-<th><strong>낙관(고위)</strong></th>
-<th><strong>결론에 대한 영향</strong></th>
+<th>민감도 변수</th>
+<th>보수적(저위)</th>
+<th>중립(기준)</th>
+<th>낙관(고위)</th>
+<th>결론에 대한 영향</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>소방관 연봉(인건비)</strong></td>
@@ -3303,10 +3307,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-13 &gt;  VSL 기반 순직·공상 방지 편익 추정</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>항목</strong></th>
-<th><strong>기준 수치</strong></th>
-<th><strong>VSL 단가</strong></th>
-<th><strong>편익 (보수적 추정)</strong></th>
+<th>항목</th>
+<th>기준 수치</th>
+<th>VSL 단가</th>
+<th>편익 (보수적 추정)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>연평균 순직자</strong></td>
@@ -3344,11 +3348,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-14 &gt;  3대 시나리오 B/C 비율 분석 (전국 1,000대 기준 30년)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>시나리오</strong></th>
-<th><strong>총 비용</strong></th>
-<th><strong>총 편익</strong></th>
-<th><strong>B/C 비율</strong></th>
-<th><strong>판정</strong></th>
+<th>시나리오</th>
+<th>총 비용</th>
+<th>총 편익</th>
+<th>B/C 비율</th>
+<th>판정</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>낙관</strong></td>
@@ -3385,10 +3389,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-15 &gt;  피지컬AI 소방 운용의 5대 법적 공백</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>쟁점</strong></th>
-<th><strong>문제 상황</strong></th>
-<th><strong>관련 법령 공백</strong></th>
-<th><strong>해결 방향</strong></th>
+<th>쟁점</th>
+<th>문제 상황</th>
+<th>관련 법령 공백</th>
+<th>해결 방향</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>①</strong></td>
@@ -3433,9 +3437,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-16 &gt;  피지컬AI 소방 운용의 4대 윤리 원칙</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>원칙</strong></th>
-<th><strong>정의</strong></th>
-<th><strong>본 연구 적용</strong></th>
+<th>원칙</th>
+<th>정의</th>
+<th>본 연구 적용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① Human-in-the-Loop</strong></td>
@@ -3468,9 +3472,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-17 &gt;  자율주행 vs 소방 분야 롱테일 환경 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>비교 항목</strong></th>
-<th><strong>자율주행</strong></th>
-<th><strong>소방 현장</strong></th>
+<th>비교 항목</th>
+<th>자율주행</th>
+<th>소방 현장</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>환경 변동성</strong></td>
@@ -3515,11 +3519,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-18 &gt;  격무지 3대 평가 지표 정의</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>지표</strong></th>
-<th><strong>의미</strong></th>
-<th><strong>산정 공식</strong></th>
-<th><strong>출처</strong></th>
-<th><strong>가중치</strong></th>
+<th>지표</th>
+<th>의미</th>
+<th>산정 공식</th>
+<th>출처</th>
+<th>가중치</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>①</strong></td>
@@ -3559,11 +3563,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-19 &gt;  3대 지표 시도별 절대수치 (2024 기준)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>시도</strong></th>
-<th><strong>① 1인당 담당인구(명)</strong></th>
-<th><strong>② 1인당 출동건수(건/년)</strong></th>
-<th><strong>③ 1인당 가중 위험대상물</strong></th>
-<th><strong>공항·항만 가중 추가</strong></th>
+<th>시도</th>
+<th>① 1인당 담당인구(명)</th>
+<th>② 1인당 출동건수(건/년)</th>
+<th>③ 1인당 가중 위험대상물</th>
+<th>공항·항만 가중 추가</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>서울</strong></td>
@@ -3643,13 +3647,13 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-20 &gt;  17개 시도 GHI 종합 순위 (가중치: 인구30·출동35·위험35)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>순위</strong></th>
-<th><strong>시도</strong></th>
-<th><strong>인구지수</strong></th>
-<th><strong>출동지수</strong></th>
-<th><strong>위험지수</strong></th>
-<th><strong>GHI</strong></th>
-<th><strong>분류</strong></th>
+<th>순위</th>
+<th>시도</th>
+<th>인구지수</th>
+<th>출동지수</th>
+<th>위험지수</th>
+<th>GHI</th>
+<th>분류</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1</strong></td>
@@ -3767,10 +3771,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-21 &gt;  GHI 기반 3단계 우선 도입 전략</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>단계</strong></th>
-<th><strong>기간</strong></th>
-<th><strong>대상 (GHI)</strong></th>
-<th><strong>도입 규모(추정)</strong></th>
+<th>단계</th>
+<th>기간</th>
+<th>대상 (GHI)</th>
+<th>도입 규모(추정)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1단계 시범</strong></td>
@@ -3800,11 +3804,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 5-22 &gt;  실제 피지컬AI 도입 시 소방서 단위 격무지 정밀 분석 절차</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>단계</strong></th>
-<th><strong>분석 항목</strong></th>
-<th><strong>세부 지표</strong></th>
-<th><strong>데이터 출처</strong></th>
-<th><strong>비고</strong></th>
+<th>단계</th>
+<th>분석 항목</th>
+<th>세부 지표</th>
+<th>데이터 출처</th>
+<th>비고</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1단계</strong></td>
@@ -3884,9 +3888,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-1 &gt;  전통 소방관 vs 피지컬AI 시대 소방관 — 역량 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>역량 영역</strong></th>
-<th><strong>전통 소방관 (현행)</strong></th>
-<th><strong>피지컬AI 시대 소방관</strong></th>
+<th>역량 영역</th>
+<th>전통 소방관 (현행)</th>
+<th>피지컬AI 시대 소방관</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>핵심 역량</strong></td>
@@ -3929,11 +3933,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-2 &gt;  4대 패러다임 변화 종합</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>축</strong></th>
-<th><strong>From (기존)</strong></th>
-<th><strong>To (미래)</strong></th>
-<th><strong>핵심 변화</strong></th>
-<th><strong>교육 영향</strong></th>
+<th>축</th>
+<th>From (기존)</th>
+<th>To (미래)</th>
+<th>핵심 변화</th>
+<th>교육 영향</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1</strong></td>
@@ -3987,10 +3991,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-3 &gt;  '피지컬AI 운용 전담요원' 자격 체계 설계(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>등급</strong></th>
-<th><strong>자격 명칭</strong></th>
-<th><strong>응시 자격</strong></th>
-<th><strong>주요 임무</strong></th>
+<th>등급</th>
+<th>자격 명칭</th>
+<th>응시 자격</th>
+<th>주요 임무</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>전문</strong></td>
@@ -4024,11 +4028,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-4 &gt;  3단계 교육과정 종합 설계(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>과정명</strong></th>
-<th><strong>교육 기간</strong></th>
-<th><strong>교육 형태</strong></th>
-<th><strong>핵심 역량 목표</strong></th>
-<th><strong>자격 부여</strong></th>
+<th>과정명</th>
+<th>교육 기간</th>
+<th>교육 형태</th>
+<th>핵심 역량 목표</th>
+<th>자격 부여</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>기본 소양</strong></td>
@@ -4065,10 +4069,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-5 &gt;  기본 소양 과정 과목 구성(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>과목명</strong></th>
-<th><strong>주요 내용</strong></th>
-<th><strong>시수</strong></th>
+<th>영역</th>
+<th>과목명</th>
+<th>주요 내용</th>
+<th>시수</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>이론</strong></td>
@@ -4119,10 +4123,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-6 &gt;  2급 과정 과목 구성(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>과목명</strong></th>
-<th><strong>주요 내용</strong></th>
-<th><strong>시수</strong></th>
+<th>영역</th>
+<th>과목명</th>
+<th>주요 내용</th>
+<th>시수</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>이론</strong></td>
@@ -4179,10 +4183,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-7 &gt;  1급 과정 과목 구성(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>과목명</strong></th>
-<th><strong>주요 내용</strong></th>
-<th><strong>시수</strong></th>
+<th>영역</th>
+<th>과목명</th>
+<th>주요 내용</th>
+<th>시수</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>이론</strong></td>
@@ -4245,10 +4249,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-8 &gt;  전문 과정 과목 구성(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>과목명</strong></th>
-<th><strong>주요 내용</strong></th>
-<th><strong>시수</strong></th>
+<th>영역</th>
+<th>과목명</th>
+<th>주요 내용</th>
+<th>시수</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>이론</strong></td>
@@ -4311,12 +4315,12 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-9 &gt;  5년간 전담요원 양성 규모 및 일정(안)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>연도</strong></th>
-<th><strong>2급</strong></th>
-<th><strong>1급</strong></th>
-<th><strong>전문</strong></th>
-<th><strong>기본 소양</strong></th>
-<th><strong>연계 도입 단계</strong></th>
+<th>연도</th>
+<th>2급</th>
+<th>1급</th>
+<th>전문</th>
+<th>기본 소양</th>
+<th>연계 도입 단계</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>2026</strong></td>
@@ -4383,10 +4387,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-10 &gt;  데이터 축적 거점 후보 비교 — 소방학교의 우위</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>비교 항목</strong></th>
-<th><strong>소방청 본청</strong></th>
-<th><strong>일선 소방서</strong></th>
-<th><strong>소방학교</strong></th>
+<th>비교 항목</th>
+<th>소방청 본청</th>
+<th>일선 소방서</th>
+<th>소방학교</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>데이터 생성</strong></td>
@@ -4426,11 +4430,11 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-11 &gt;  표준 데이터셋 정의 (3대 출처 × 4대 차원)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>출처/차원</strong></th>
-<th><strong>센서 데이터</strong></th>
-<th><strong>영상 데이터</strong></th>
-<th><strong>행동 데이터</strong></th>
-<th><strong>결과 데이터</strong></th>
+<th>출처/차원</th>
+<th>센서 데이터</th>
+<th>영상 데이터</th>
+<th>행동 데이터</th>
+<th>결과 데이터</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>실전 출동</strong></td>
@@ -4466,10 +4470,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 6-12 &gt;  분산 축적 + 시스템 통합 모델 구조</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>계층</strong></th>
-<th><strong>주체</strong></th>
-<th><strong>역할</strong></th>
-<th><strong>핵심 가치</strong></th>
+<th>계층</th>
+<th>주체</th>
+<th>역할</th>
+<th>핵심 가치</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>축적 계층 (분산)</strong></td>
@@ -4533,10 +4537,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-1 &gt;  도입 로드맵의 5대 통합 축</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>축</strong></th>
-<th><strong>내용</strong></th>
-<th><strong>본 논문 근거 장·절</strong></th>
-<th><strong>핵심 통합 메시지</strong></th>
+<th>축</th>
+<th>내용</th>
+<th>본 논문 근거 장·절</th>
+<th>핵심 통합 메시지</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 도입 규모</strong></td>
@@ -4575,8 +4579,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-2 &gt;  1단계 시범기 (2026~2028) 통합 설계</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>5대 축</strong></th>
-<th><strong>1단계 시범기 세부 내용</strong></th>
+<th>5대 축</th>
+<th>1단계 시범기 세부 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 도입 규모</strong></td>
@@ -4608,8 +4612,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-3 &gt;  2단계 확산기 (2029~2030) 통합 설계</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>5대 축</strong></th>
-<th><strong>2단계 확산기 세부 내용</strong></th>
+<th>5대 축</th>
+<th>2단계 확산기 세부 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 도입 규모</strong></td>
@@ -4638,8 +4642,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-4 &gt;  3단계 정착기 (2031~2040) 통합 설계</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>5대 축</strong></th>
-<th><strong>3단계 정착기 세부 내용</strong></th>
+<th>5대 축</th>
+<th>3단계 정착기 세부 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 도입 규모</strong></td>
@@ -4668,10 +4672,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-5 &gt;  3단계 도입 로드맵 통합 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>축</strong></th>
-<th><strong>1단계 시범기 (2026~2028)</strong></th>
-<th><strong>2단계 확산기 (2029~2030)</strong></th>
-<th><strong>3단계 정착기 (2031~2040)</strong></th>
+<th>축</th>
+<th>1단계 시범기 (2026~2028)</th>
+<th>2단계 확산기 (2029~2030)</th>
+<th>3단계 정착기 (2031~2040)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 도입 규모</strong></td>
@@ -4744,9 +4748,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-6 &gt;  1,000대 도입 기준 30년 LCC 비교</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>구분</strong></th>
-<th><strong>소방관 1,000명 (30년)</strong></th>
-<th><strong>피지컬AI 1,000대 (30년 환산)</strong></th>
+<th>구분</th>
+<th>소방관 1,000명 (30년)</th>
+<th>피지컬AI 1,000대 (30년 환산)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>총 LCC</strong></td>
@@ -4772,10 +4776,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-7 &gt;  1,000대 도입 30년 B/C 비율 (3대 시나리오)</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>시나리오</strong></th>
-<th><strong>총 비용</strong></th>
-<th><strong>총 편익</strong></th>
-<th><strong>B/C 판정</strong></th>
+<th>시나리오</th>
+<th>총 비용</th>
+<th>총 편익</th>
+<th>B/C 판정</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>낙관</strong></td>
@@ -4820,10 +4824,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 7-8 &gt;  3대 기대효과 종합</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>효과 차원</strong></th>
-<th><strong>핵심 지표</strong></th>
-<th><strong>정량/정성 효과</strong></th>
-<th><strong>본 논문 근거</strong></th>
+<th>효과 차원</th>
+<th>핵심 지표</th>
+<th>정량/정성 효과</th>
+<th>본 논문 근거</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>① 인적 효과</strong></td>
@@ -4890,10 +4894,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-1 &gt;  제4장 설문조사 핵심 결과 요약</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>문항</strong></th>
-<th><strong>내용</strong></th>
-<th><strong>동의율</strong></th>
-<th><strong>정책 함의</strong></th>
+<th>문항</th>
+<th>내용</th>
+<th>동의율</th>
+<th>정책 함의</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>3번</strong></td>
@@ -4939,9 +4943,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-2 &gt;  제5장 핵심 분석 결과 요약</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>분석 영역</strong></th>
-<th><strong>핵심 결과</strong></th>
-<th><strong>정책 함의</strong></th>
+<th>분석 영역</th>
+<th>핵심 결과</th>
+<th>정책 함의</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>5.1 분야별 활용</strong></td>
@@ -4981,10 +4985,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-3 &gt;  3단계 도입 로드맵 핵심 요약</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>단계</strong></th>
-<th><strong>기간 /  규모</strong></th>
-<th><strong>대상 /  시나리오</strong></th>
-<th><strong>핵심 성격</strong></th>
+<th>단계</th>
+<th>기간 / 규모</th>
+<th>대상 / 시나리오</th>
+<th>핵심 성격</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1단계 시범</strong></td>
@@ -5027,8 +5031,8 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-4 &gt;  정책과제 ② 핵심 제언</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>영역</strong></th>
-<th><strong>핵심 제언</strong></th>
+<th>영역</th>
+<th>핵심 제언</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>도입 우선순위</strong></td>
@@ -5049,9 +5053,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-5 &gt;  정책과제 ③ 3단계 법제 정비 제언</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>단계</strong></th>
-<th><strong>시기</strong></th>
-<th><strong>핵심 내용</strong></th>
+<th>단계</th>
+<th>시기</th>
+<th>핵심 내용</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>1단계</strong></td>
@@ -5081,10 +5085,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-6 &gt;  정책과제 ⑤ 교육·인력 양성 제언</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>등급</strong></th>
-<th><strong>교육 기간</strong></th>
-<th><strong>5년 누적</strong></th>
-<th><strong>핵심 임무</strong></th>
+<th>등급</th>
+<th>교육 기간</th>
+<th>5년 누적</th>
+<th>핵심 임무</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>기본 소양</strong></td>
@@ -5117,10 +5121,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-7 &gt;  3주체별 핵심 행동 과제</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>주체</strong></th>
-<th><strong>핵심 역할</strong></th>
-<th><strong>단기 과제 (2026~2028)</strong></th>
-<th><strong>중장기 과제 (2029~2040)</strong></th>
+<th>주체</th>
+<th>핵심 역할</th>
+<th>단기 과제 (2026~2028)</th>
+<th>중장기 과제 (2029~2040)</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>소방청</strong></td>
@@ -5154,9 +5158,9 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-8 &gt;  본 연구의 학술적·방법론적 한계</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>한계 영역</strong></th>
-<th><strong>구체 내용</strong></th>
-<th><strong>후행 연구 방향성</strong></th>
+<th>한계 영역</th>
+<th>구체 내용</th>
+<th>후행 연구 방향성</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>표본의 외적 타당도</strong></td>
@@ -5193,10 +5197,10 @@ table td strong { color: var(--navy); }
 <p class="table-caption">&lt; 표 8-9 &gt;  5대 후행 연구 과제</p>
 <div class="table-wrap"><table>
 <tr class="thead">
-<th><strong>#</strong></th>
-<th><strong>연구 영역</strong></th>
-<th><strong>핵심 연구 과제</strong></th>
-<th><strong>학술 협업 주체</strong></th>
+<th>#</th>
+<th>연구 영역</th>
+<th>핵심 연구 과제</th>
+<th>학술 협업 주체</th>
 </tr>
 <tr class="tr-odd">
 <td><strong>①</strong></td>
