@@ -74,6 +74,24 @@ body {
   transition: all 0.2s;
 }
 .app-header .menu-toggle:hover { background: rgba(255,255,255,0.25); }
+
+.app-header .print-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.app-header .print-btn:hover {
+  background: rgba(255, 248, 225, 0.25);
+  border-color: rgba(255, 248, 225, 0.5);
+}
+.app-header .print-btn:active { transform: scale(0.97); }
 .app-header .title-area { flex: 1; }
 .app-header .title { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
 .app-header .subtitle { font-size: 11px; opacity: 0.85; margin-top: 1px; }
@@ -597,10 +615,107 @@ table th * { color: white !important; }
    인쇄 스타일
    ============================================================ */
 @media print {
-  .app-header, .sidenav, .overlay, .scroll-top, .page-end-nav, .abstract-nav-cta { display: none !important; }
-  body { padding-top: 0; }
-  .page-section { display: block !important; page-break-before: always; }
+  /* ── 화면 전용 요소 숨김 ── */
+  .app-header, .sidenav, .overlay, .scroll-top,
+  .page-end-nav, .abstract-nav-cta, .toast { display: none !important; }
+
+  /* ── 모든 섹션 표시 (JS의 print-show 클래스도 처리) ── */
+  .page-section,
+  .page-section.print-show {
+    display: block !important;
+  }
+
+  /* ── 페이지 설정 ── */
+  @page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+  }
+
+  /* ── 색상 강제 보존 (브라우저 기본 색상 제거 방지) ── */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    padding-top: 0;
+    background: white !important;
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  /* ── 장별 페이지 분리 ── */
+  .page-section {
+    page-break-before: always;
+    page-break-after: auto;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    animation: none;
+  }
   .page-section:first-child { page-break-before: auto; }
+
+  /* ── 표 페이지 잘림 방지 ── */
+  table { page-break-inside: avoid; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+  thead { display: table-header-group; }
+  tbody { display: table-row-group; }
+  th { background: var(--navy) !important; color: white !important; }
+
+  /* ── 박스 잘림 방지 ── */
+  .box { page-break-inside: avoid; }
+
+  /* ── 헤딩 분리 방지 ── */
+  h1, h2, h3, h4,
+  .h-bold, .h-2, .h-3, .h-4 { page-break-after: avoid; }
+  .chapter-num { page-break-after: avoid; }
+
+  /* ── 표 캡션과 표를 함께 ── */
+  .table-caption { page-break-after: avoid; }
+  .table-wrap { page-break-before: avoid; }
+
+  /* ── 폰트·여백 미세 조정 ── */
+  .section-content p { margin: 6px 0; line-height: 1.65; }
+  .h-2 { font-size: 16pt; margin-top: 18pt; }
+  .h-3 { font-size: 13pt; margin-top: 14pt; }
+  table { font-size: 9pt; }
+  table th, table td { padding: 6px 8px; }
+  .source { font-size: 8.5pt; }
+
+  /* ── 목차 카드 인쇄 시 단순화 ── */
+  .toc-card { box-shadow: none; }
+  .toc-card-arrow { display: none; }
+
+  /* ── 링크 색상 본문 색상으로 통일 ── */
+  a { color: inherit; text-decoration: none; }
+}
+
+/* ============================================================
+   토스트 알림
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(27, 42, 90, 0.95);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 200;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ============================================================
@@ -612,6 +727,8 @@ table th * { color: white !important; }
   .app-header .title { font-size: 14px; }
   .app-header .subtitle { display: none; }
   .app-header .author { font-size: 12px; }
+  .app-header .print-btn-label,
+  .app-header .menu-toggle span:last-child { display: none; }
   .page-section { padding: 24px 16px 48px; }
   .toc-title { font-size: 24px; }
   .toc-card { padding: 14px 16px; gap: 14px; }
@@ -641,6 +758,10 @@ table th * { color: white !important; }
     <div class="title">인구절벽시대 피지컬AI 소방현장활동 도입 연구</div>
     <div class="subtitle">제31회 중앙소방학교 교육혁신 연구개발 경연대회</div>
   </div>
+  <button class="print-btn" id="printBtn" aria-label="전체 인쇄" title="논문 전체 인쇄 (Ctrl+P)">
+    <span>📄</span>
+    <span class="print-btn-label">전체 인쇄</span>
+  </button>
   <div class="author"><strong>권유진</strong></div>
 </header>
 
@@ -5448,6 +5569,53 @@ table th * { color: white !important; }
   // 초기 화면
   var initialId = window.location.hash.substring(1) || 'abstract';
   showSection(initialId);
+
+  // ===========================================================
+  // 전체 인쇄 기능
+  // ===========================================================
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) {
+    printBtn.addEventListener('click', function() {
+      // 모든 섹션을 임시로 표시
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.add('print-show');
+      }
+      // 안내 토스트
+      showToast('인쇄 대화상자를 여는 중... 인쇄 후 원래 화면으로 돌아옵니다.');
+      // 약간의 지연 후 인쇄
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    });
+  }
+
+  // 인쇄 후 원상복구
+  window.addEventListener('afterprint', function() {
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].classList.remove('print-show');
+    }
+  });
+  // beforeprint 시점에도 모든 섹션 표시 (Ctrl+P 직접 사용 대비)
+  window.addEventListener('beforeprint', function() {
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].classList.add('print-show');
+    }
+  });
+
+  // ===========================================================
+  // 토스트 메시지
+  // ===========================================================
+  function showToast(msg) {
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(function() { toast.classList.add('show'); }, 10);
+    setTimeout(function() {
+      toast.classList.remove('show');
+      setTimeout(function() { toast.remove(); }, 300);
+    }, 2400);
+  }
 
   // ESC 키
   document.addEventListener('keydown', function(e) {
